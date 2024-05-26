@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<HBox fx:id="box" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="173.0" prefWidth="265.0" spacing="15.0" style="-fx-background-color: #3D3D3D;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.libmanagement.admin.CardController">
+   <children>
+      <ImageView fx:id="bookimage" fitHeight="174.0" fitWidth="125.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../books/history_of_human.png" />
+         </image>
+      </ImageView>
+      <VBox prefHeight="174.0" prefWidth="152.0">
+         <children>
+            <Label fx:id="bookname" prefHeight="93.0" prefWidth="167.0" text="A Brief History of &#10;Humankind" textFill="WHITE">
+               <font>
+                  <Font name="Berlin Sans FB Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="author" alignment="TOP_LEFT" prefHeight="93.0" prefWidth="167.0" text="Yuval Noah Harari&#10;" textFill="WHITE">
+               <font>
+                  <Font name="Berlin Sans FB" size="15.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+   </children>
+</HBox>

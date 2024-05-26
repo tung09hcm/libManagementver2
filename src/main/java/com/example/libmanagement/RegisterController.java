@@ -3,16 +3,23 @@ package com.example.libmanagement;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class RegisterController implements Initializable {
@@ -52,8 +59,7 @@ public class RegisterController implements Initializable {
         System.out.println("set combobox complete");
 
     }
-    public void register(ActionEvent event)
-    {
+    public void register(ActionEvent event) throws IOException {
         String class_data = class_v.getValue();
         String password_data = password.getText();
         String studentname_data = studentname.getText();
@@ -98,9 +104,21 @@ public class RegisterController implements Initializable {
 
 
 
-            } catch (SQLException e) {
+            }
+            catch (SQLException e) {
                 throw new RuntimeException(e);
             }
+
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Admin_Dashboard.fxml")));
+            Stage stage = new Stage();
+            Scene scene = new Scene(root);
+            stage.setTitle("Library Management");
+            stage.setScene(scene);
+            stage.setResizable(false);
+            Image icon = new Image("book.png");
+            stage.getIcons().add(icon);
+
+            stage.show();
         }
 
     }
