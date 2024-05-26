@@ -50,12 +50,32 @@ public class UserDashboard implements Initializable {
     private List<Book> recentlyAdd()
     {
         List<Book> ls = new ArrayList<>();
+
         Book book = new Book();
         book.setName("A Brief History of \n" +
                 "Humankind");
         book.setAuthor("Yuval Noah Harari\n");
         book.setImageSrc("/books/history_of_human.png");
         ls.add(book);
+
+        Book book1 = new Book();
+        book1.setName("No game \n\t No life 4");
+        book1.setAuthor("Yuu Kamiya\n");
+        book1.setImageSrc("/books/ngnl4.png");
+        ls.add(book1);
+
+        Book book2 = new Book();
+        book2.setName("No game \n\t No life 5");
+        book2.setAuthor("Yuu Kamiya\n");
+        book2.setImageSrc("/books/ngnl5.png");
+        ls.add(book2);
+
+        Book book3 = new Book();
+        book3.setName("Angel Next Door 3");
+        book3.setAuthor("Saekisan\n");
+        book3.setImageSrc("/books/angel3.png");
+        ls.add(book3);
+
         return ls;
     }
 }

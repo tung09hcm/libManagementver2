@@ -4,24 +4,15 @@ public class Book {
     private String name;
     private String author;
     private String ImageSrc;
-    private boolean TextBook;
-    private boolean WorkBook;
-    private boolean Reference_book;
-    private boolean Guidebook;
-    private boolean Supplementary;
+    private String id;
     public Book()
-    {
+    {}
 
-    }
-    public Book(String name, String author, String imageSrc, boolean textBook, boolean workBook, boolean reference_book, boolean guidebook, boolean supplementary) {
+    public Book(String name, String author, String imageSrc, String id) {
         this.name = name;
         this.author = author;
         ImageSrc = imageSrc;
-        TextBook = textBook;
-        WorkBook = workBook;
-        Reference_book = reference_book;
-        Guidebook = guidebook;
-        Supplementary = supplementary;
+        this.id = id;
     }
 
     public String getName() {
@@ -48,43 +39,11 @@ public class Book {
         ImageSrc = imageSrc;
     }
 
-    public boolean isTextBook() {
-        return TextBook;
+    public String getId() {
+        return id;
     }
 
-    public void setTextBook(boolean textBook) {
-        TextBook = textBook;
-    }
-
-    public boolean isWorkBook() {
-        return WorkBook;
-    }
-
-    public void setWorkBook(boolean workBook) {
-        WorkBook = workBook;
-    }
-
-    public boolean isReference_book() {
-        return Reference_book;
-    }
-
-    public void setReference_book(boolean reference_book) {
-        Reference_book = reference_book;
-    }
-
-    public boolean isGuidebook() {
-        return Guidebook;
-    }
-
-    public void setGuidebook(boolean guidebook) {
-        Guidebook = guidebook;
-    }
-
-    public boolean isSupplementary() {
-        return Supplementary;
-    }
-
-    public void setSupplementary(boolean supplementary) {
-        Supplementary = supplementary;
+    public void setId(String id) {
+        this.id = id;
     }
 }
