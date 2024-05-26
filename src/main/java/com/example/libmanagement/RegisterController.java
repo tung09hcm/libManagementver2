@@ -1,5 +1,6 @@
 package com.example.libmanagement;
 
+import com.example.libmanagement.user.UserDashboard;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -9,14 +10,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Objects;
@@ -108,8 +106,14 @@ public class RegisterController implements Initializable {
             catch (SQLException e) {
                 throw new RuntimeException(e);
             }
+            username.getScene().getWindow().hide();
 
-            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Admin_Dashboard.fxml")));
+            FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("User_Dashboard.fxml")));
+            Parent root = loader.load();
+
+            UserDashboard userDashboard = loader.getController();
+            userDashboard.setUsername(studentname_data);
+
             Stage stage = new Stage();
             Scene scene = new Scene(root);
             stage.setTitle("Library Management");
@@ -119,6 +123,7 @@ public class RegisterController implements Initializable {
             stage.getIcons().add(icon);
 
             stage.show();
+
         }
 
     }

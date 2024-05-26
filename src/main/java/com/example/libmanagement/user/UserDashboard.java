@@ -1,11 +1,11 @@
-package com.example.libmanagement.admin;
+package com.example.libmanagement.user;
 
 import com.example.libmanagement.Book;
+import com.example.libmanagement.CardController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 
 import java.io.IOException;
@@ -14,9 +14,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class AdminDashboard implements Initializable {
+public class UserDashboard implements Initializable {
     @FXML
     private HBox cardlayout;
+    @FXML
+    private Label username;
     private List<Book> recentlyAdded;
 
     @Override
@@ -38,6 +40,11 @@ public class AdminDashboard implements Initializable {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+
+    }
+    public void setUsername(String username_v)
+    {
+        username.setText(username_v);
     }
 
     private List<Book> recentlyAdd()

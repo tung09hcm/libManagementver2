@@ -1,4 +1,4 @@
-package com.example.libmanagement.admin;
+package com.example.libmanagement;
 
 import com.example.libmanagement.Book;
 import javafx.fxml.FXML;
