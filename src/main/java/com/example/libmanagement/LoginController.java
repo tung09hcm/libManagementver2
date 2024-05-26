@@ -11,10 +11,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class LoginController {
     @FXML
@@ -29,6 +31,7 @@ public class LoginController {
     private Stage stage;
     private Scene scene;
     private Parent root;
+
     @FXML
     void close(ActionEvent event) {
         // Đóng cửa sổ hiện tại
@@ -75,7 +78,7 @@ public class LoginController {
     public void register(ActionEvent event) throws IOException
     {
         username.getScene().getWindow().hide();
-        Parent root = FXMLLoader.load(getClass().getResource("Register.fxml"));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Register.fxml")));
 
         Stage stage = new Stage();
         Scene scene = new Scene(root);
