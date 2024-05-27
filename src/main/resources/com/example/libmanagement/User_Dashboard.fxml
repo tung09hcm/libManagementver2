@@ -34,7 +34,7 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <JFXButton alignment="CENTER_RIGHT" prefHeight="76.0" prefWidth="143.0" styleClass="selected" stylesheets="@stylesheet.css" text="Home" textFill="#f7f7f7">
+                  <JFXButton fx:id="HomeButton" alignment="CENTER_RIGHT" prefHeight="76.0" prefWidth="143.0" styleClass="mouse_moved" stylesheets="@stylesheet.css" text="Home" textFill="#f7f7f7">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>
@@ -59,22 +59,22 @@
                         <Image url="@../../../mark.png" />
                      </image>
                   </ImageView>
-                  <JFXButton alignment="CENTER_RIGHT" prefHeight="76.0" prefWidth="143.0" styleClass="mouse_moved" stylesheets="@stylesheet.css" text="Catagory" textFill="#f7f7f7" GridPane.rowIndex="1">
+                  <JFXButton fx:id="CatagoryButton" alignment="CENTER_RIGHT" onAction="#switchForm" prefHeight="76.0" prefWidth="143.0" styleClass="mouse_moved" stylesheets="@stylesheet.css" text="Catagory" textFill="#f7f7f7" GridPane.rowIndex="1">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton alignment="CENTER_RIGHT" prefHeight="76.0" prefWidth="143.0" styleClass="mouse_moved" stylesheets="@stylesheet.css" text="Borrowed" textFill="#f7f7f7" GridPane.rowIndex="2">
+                  <JFXButton fx:id="BorrowedButton" alignment="CENTER_RIGHT" prefHeight="76.0" prefWidth="143.0" styleClass="mouse_moved" stylesheets="@stylesheet.css" text="Borrowed" textFill="#f7f7f7" GridPane.rowIndex="2">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton alignment="CENTER_RIGHT" prefHeight="76.0" prefWidth="143.0" styleClass="mouse_moved" stylesheets="@stylesheet.css" text="Available" textFill="#f7f7f7" GridPane.rowIndex="3">
+                  <JFXButton fx:id="AvailableButton" alignment="CENTER_RIGHT" prefHeight="76.0" prefWidth="143.0" styleClass="mouse_moved" stylesheets="@stylesheet.css" text="Available" textFill="#f7f7f7" GridPane.rowIndex="3">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton alignment="CENTER_RIGHT" prefHeight="76.0" prefWidth="143.0" styleClass="mouse_moved" stylesheets="@stylesheet.css" text="Author" textFill="#f7f7f7" GridPane.rowIndex="4">
+                  <JFXButton fx:id="AuthorButton" alignment="CENTER_RIGHT" prefHeight="76.0" prefWidth="143.0" styleClass="mouse_moved" stylesheets="@stylesheet.css" text="Author" textFill="#f7f7f7" GridPane.rowIndex="4">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>
@@ -88,7 +88,7 @@
             </GridPane>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="169.0" layoutY="44.0" prefHeight="636.0" prefWidth="1124.0" style="-fx-background-color: #3D3D3D;">
+      <AnchorPane fx:id="HomePane" layoutX="169.0" layoutY="44.0" prefHeight="636.0" prefWidth="1124.0" style="-fx-background-color: #3D3D3D;">
          <children>
             <Label layoutX="14.0" prefHeight="62.0" prefWidth="306.0" text="Recently Add" textFill="WHITE">
                <font>

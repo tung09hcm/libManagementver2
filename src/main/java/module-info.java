@@ -2,6 +2,7 @@ module com.example.libmanagement {
     requires javafx.controls;
     requires javafx.fxml;
     requires java.sql;
+    requires com.jfoenix;
 
     exports com.example.libmanagement.user to javafx.fxml;
     opens com.example.libmanagement to javafx.fxml;

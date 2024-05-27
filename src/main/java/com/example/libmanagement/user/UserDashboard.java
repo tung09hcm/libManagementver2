@@ -2,18 +2,28 @@ package com.example.libmanagement.user;
 
 import com.example.libmanagement.Book;
 import com.example.libmanagement.CardController;
+import com.example.libmanagement.Login;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.ResourceBundle;
-
+import com.jfoenix.controls.JFXButton;
 public class UserDashboard implements Initializable {
     @FXML
     private HBox cardlayout;
@@ -21,8 +31,21 @@ public class UserDashboard implements Initializable {
     private HBox cardlayout1;
     @FXML
     private Label username;
+    @FXML
+    private AnchorPane HomePane;
+    @FXML
+    private JFXButton AuthorButton;
+    @FXML
+    private JFXButton AvailableButton;
+    @FXML
+    private JFXButton BorrowedButton;
+    @FXML
+    private JFXButton CatagoryButton;
+    @FXML
+    private JFXButton HomeButton;
     private List<Book> recentlyAdded;
-
+    private Stage stage;
+    private Scene scene;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         recentlyAdded = new ArrayList<>(recentlyAdd());
@@ -65,7 +88,37 @@ public class UserDashboard implements Initializable {
     {
         username.setText(username_v);
     }
-
+    public void switchForm(ActionEvent e)
+    {
+        System.out.println("==================================");
+        System.out.println("switchform signa");
+        System.out.println("Source: " + e.getSource().toString());
+        System.out.println("==================================");
+        if(e.getSource() == CatagoryButton)
+        {
+            System.out.println("CatagoryButton signal");
+            HomePane.setVisible(false);
+        }
+        else if (e.getSource() == AuthorButton)
+        {
+            System.out.println("AuthorButton signal");
+        }
+        else if (e.getSource() == AvailableButton)
+        {
+            System.out.println("AvailableButton signal");
+        }
+        else if (e.getSource() == BorrowedButton)
+        {
+            System.out.println("BorrowedButton signal");
+        }
+        else if (e.getSource() == HomeButton)
+        {
+            System.out.println("HomeButton signal");
+        }
+        else {
+            System.out.println("something went wrong");
+        }
+    }
     private List<Book> recentlyAdd()
     {
         List<Book> ls = new ArrayList<>();
@@ -98,4 +151,6 @@ public class UserDashboard implements Initializable {
 
         return ls;
     }
+
+
 }
