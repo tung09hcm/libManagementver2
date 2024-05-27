@@ -24,7 +24,7 @@ public class Login extends Application {
         Image icon = new Image("book.png");
         stage.getIcons().add(icon);
 
-        stage.initStyle(StageStyle.UNDECORATED);
+        //stage.initStyle(StageStyle.UNDECORATED);
 
         stage.show();
 

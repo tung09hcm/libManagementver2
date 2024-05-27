@@ -6,6 +6,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import javafx.scene.paint.Color;
 
 import java.util.Objects;
 
@@ -20,7 +21,7 @@ public class CardController {
     private HBox box;
     @FXML
     private ImageView bookimage;
-
+    private String [] colors = {"7b9cb0","8275d1", "cf848f","47c4a7"};
     public void setData (Book book)
     {
         Image image = new Image(Objects.requireNonNull(getClass().getResourceAsStream(book.getImageSrc())));
@@ -29,6 +30,8 @@ public class CardController {
         bookname.setText(book.getName());
         author.setText(book.getAuthor());
         returndate.setText(book.getReturndate());
+
+        box.setStyle("-fx-background-color: #" + (colors[(int)(Math.random()*colors.length)]));
 
     }
     public void getInfromationofCard()

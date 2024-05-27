@@ -31,8 +31,12 @@ public class UserDashboard implements Initializable {
     private HBox cardlayout1;
     @FXML
     private Label username;
+
     @FXML
     private AnchorPane HomePane;
+    @FXML
+    private AnchorPane CatagoryPanel;
+
     @FXML
     private JFXButton AuthorButton;
     @FXML
@@ -44,11 +48,15 @@ public class UserDashboard implements Initializable {
     @FXML
     private JFXButton HomeButton;
     private List<Book> recentlyAdded;
+    private List<Book> recommendBook;
     private Stage stage;
     private Scene scene;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        HomePane.setVisible(true);
+        CatagoryPanel.setVisible(false);
         recentlyAdded = new ArrayList<>(recentlyAdd());
+        recommendBook = new ArrayList<>(recommendAdd());
         try {
             for (Book book : recentlyAdded) {
                 FXMLLoader fxmlLoader = new FXMLLoader();
@@ -64,7 +72,7 @@ public class UserDashboard implements Initializable {
                 cardlayout.getChildren().add(cardBox);
 
             }
-            for (Book book : recentlyAdded) {
+            for (Book book : recommendBook) {
                 FXMLLoader fxmlLoader = new FXMLLoader();
                 fxmlLoader.setLocation(getClass().getResource("/com/example/libmanagement/BookSample.fxml"));
                 // System.out.println("pass thourgh setlocation");
@@ -98,10 +106,12 @@ public class UserDashboard implements Initializable {
         {
             System.out.println("CatagoryButton signal");
             HomePane.setVisible(false);
+            CatagoryPanel.setVisible(true);
         }
         else if (e.getSource() == AuthorButton)
         {
             System.out.println("AuthorButton signal");
+
         }
         else if (e.getSource() == AvailableButton)
         {
@@ -114,6 +124,8 @@ public class UserDashboard implements Initializable {
         else if (e.getSource() == HomeButton)
         {
             System.out.println("HomeButton signal");
+            HomePane.setVisible(true);
+            CatagoryPanel.setVisible(false);
         }
         else {
             System.out.println("something went wrong");
@@ -151,6 +163,43 @@ public class UserDashboard implements Initializable {
 
         return ls;
     }
+    private List<Book> recommendAdd()
+    {
+        List<Book> ls = new ArrayList<>();
 
+        Book book = new Book();
+        book.setName("A Brief History of \n" +
+                "Humankind");
+        book.setAuthor("Yuval Noah Harari\n");
+        book.setImageSrc("/books/history_of_human.png");
+        book.setReturndate("20/6/2024");
+        ls.add(book);
+
+        Book book1 = new Book();
+        book1.setName("No game \n\t No life 4");
+        book1.setAuthor("Yuu Kamiya\n");
+        book1.setImageSrc("/books/ngnl4.png");
+        ls.add(book1);
+
+        Book book2 = new Book();
+        book2.setName("No game \n\t No life 5");
+        book2.setAuthor("Yuu Kamiya\n");
+        book2.setImageSrc("/books/ngnl5.png");
+        ls.add(book2);
+
+        Book book3 = new Book();
+        book3.setName("Angel Next Door 3");
+        book3.setAuthor("Saekisan\n");
+        book3.setImageSrc("/books/angel3.png");
+        ls.add(book3);
+
+//        Book book4 = new Book();
+//        book4.setName("No game \n\t No life 6");
+//        book4.setAuthor("Yuu Kamiya\n");
+//        book4.setImageSrc("/books/ngnl6.png");
+//        ls.add(book4);
+
+        return ls;
+    }
 
 }
