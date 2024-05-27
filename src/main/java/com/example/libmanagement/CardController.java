@@ -28,5 +28,11 @@ public class CardController {
         author.setText(book.getAuthor());
 
     }
+    public void getInfromationofCard()
+    {
+        System.out.println("bookname: " + bookname.getText());
+        System.out.println("author: " + author.getText());
+        System.out.println("===============================");
+    }
 
 }

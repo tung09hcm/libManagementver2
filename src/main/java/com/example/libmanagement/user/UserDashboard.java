@@ -18,6 +18,8 @@ public class UserDashboard implements Initializable {
     @FXML
     private HBox cardlayout;
     @FXML
+    private HBox cardlayout1;
+    @FXML
     private Label username;
     private List<Book> recentlyAdded;
 
@@ -35,7 +37,23 @@ public class UserDashboard implements Initializable {
 
                 CardController cardController = fxmlLoader.getController();
                 cardController.setData(book);
+
                 cardlayout.getChildren().add(cardBox);
+
+            }
+            for (Book book : recentlyAdded) {
+                FXMLLoader fxmlLoader = new FXMLLoader();
+                fxmlLoader.setLocation(getClass().getResource("/com/example/libmanagement/BookSample.fxml"));
+                System.out.println("pass thourgh setlocation");
+
+                HBox cardBox = fxmlLoader.load();
+                System.out.println("pass thourgh load");
+
+                CardController cardController = fxmlLoader.getController();
+                cardController.setData(book);
+
+                cardlayout1.getChildren().add(cardBox);
+
             }
         } catch (IOException e) {
             throw new RuntimeException(e);

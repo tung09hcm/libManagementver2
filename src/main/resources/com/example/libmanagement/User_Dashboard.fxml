@@ -12,9 +12,9 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="731.0" prefWidth="1210.0" style="-fx-background-color: #2e3030;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.libmanagement.user.UserDashboard">
+<AnchorPane prefHeight="655.0" prefWidth="1293.0" style="-fx-background-color: #2e3030;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.libmanagement.user.UserDashboard">
    <children>
-      <AnchorPane layoutX="-1.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="731.0" prefWidth="170.0" style="-fx-background-color: #2e3030;">
+      <AnchorPane layoutX="-1.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="680.0" prefWidth="170.0" style="-fx-background-color: #2e3030;">
          <children>
             <ImageView fitHeight="76.0" fitWidth="83.0" layoutX="39.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -88,7 +88,7 @@
             </GridPane>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="169.0" layoutY="44.0" prefHeight="688.0" prefWidth="1124.0" style="-fx-background-color: #3D3D3D;">
+      <AnchorPane layoutX="169.0" layoutY="44.0" prefHeight="636.0" prefWidth="1124.0" style="-fx-background-color: #3D3D3D;">
          <children>
             <Label layoutX="14.0" prefHeight="62.0" prefWidth="306.0" text="Recently Add" textFill="WHITE">
                <font>
@@ -100,7 +100,8 @@
                   <Font name="Berlin Sans FB" size="20.0" />
                </font>
             </Label>
-            <HBox fx:id="cardlayout" alignment="CENTER_LEFT" layoutX="14.0" layoutY="48.0" prefHeight="244.0" prefWidth="1018.0" spacing="15.0" />
+            <HBox fx:id="cardlayout" alignment="CENTER_LEFT" layoutX="14.0" layoutY="48.0" prefHeight="244.0" prefWidth="1098.0" spacing="15.0" />
+            <HBox fx:id="cardlayout1" alignment="CENTER_LEFT" layoutX="14.0" layoutY="344.0" prefHeight="244.0" prefWidth="1098.0" spacing="15.0" />
          </children>
       </AnchorPane>
       <HBox alignment="CENTER" layoutX="169.0" layoutY="3.0" prefHeight="28.0" prefWidth="265.0">
@@ -113,12 +114,12 @@
             </ImageView>
          </children>
       </HBox>
-      <Label fx:id="username" alignment="CENTER_RIGHT" layoutX="1001.0" prefHeight="34.0" prefWidth="255.0" text="Bùi Thanh Tùng" textFill="WHITE">
+      <Label fx:id="username" alignment="CENTER_RIGHT" layoutX="982.0" prefHeight="34.0" prefWidth="255.0" text="Bùi Thanh Tùng" textFill="WHITE">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </Label>
-      <ImageView fitHeight="62.0" fitWidth="34.0" layoutX="1257.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="62.0" fitWidth="34.0" layoutX="1245.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../icons8-user-96.png" />
          </image>
