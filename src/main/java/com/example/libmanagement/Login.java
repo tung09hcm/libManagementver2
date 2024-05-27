@@ -15,7 +15,7 @@ public class Login extends Application {
     @Override
     public void start(Stage stage) throws IOException {
 
-        FXMLLoader fxmlLoader = new FXMLLoader(Login.class.getResource("User_Dashboard.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Login.class.getResource("Login.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("Library Management");
         stage.setResizable(false);
@@ -24,7 +24,7 @@ public class Login extends Application {
         Image icon = new Image("book.png");
         stage.getIcons().add(icon);
 
-        //stage.initStyle(StageStyle.UNDECORATED);
+        stage.initStyle(StageStyle.UNDECORATED);
 
         stage.show();
 

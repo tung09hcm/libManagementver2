@@ -10,6 +10,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -72,6 +73,13 @@ public class RegisterController implements Initializable {
         {
             System.out.println("tín hiệu 1");
             Alert warningAlert = new Alert(Alert.AlertType.WARNING);
+
+//            Image image = new Image("pokeball.png");
+//            ImageView imageView = new ImageView(image);
+//            imageView.setFitHeight(48);
+//            imageView.setFitWidth(48);
+//            warningAlert.setGraphic(imageView);
+
             warningAlert.setTitle("Cảnh báo");
             warningAlert.setHeaderText(null);
             warningAlert.setContentText("Không được để trống!");
@@ -81,6 +89,13 @@ public class RegisterController implements Initializable {
         {
             System.out.println("tín hiệu 2");
             Alert warningAlert = new Alert(Alert.AlertType.WARNING);
+
+//            Image image = new Image("pokeball.png");
+//            ImageView imageView = new ImageView(image);
+//            imageView.setFitHeight(48);
+//            imageView.setFitWidth(48);
+//            warningAlert.setGraphic(imageView);
+
             warningAlert.setTitle("Cảnh báo");
             warningAlert.setHeaderText(null);
             warningAlert.setContentText("Mật khẩu không trùng nhau!");

@@ -1,5 +1,6 @@
 package com.example.libmanagement;
 
+import com.example.libmanagement.user.UserDashboard;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
@@ -16,7 +17,12 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Objects;
+
+import java.sql.ResultSet;
 
 public class LoginController {
     @FXML
@@ -31,7 +37,7 @@ public class LoginController {
     private Stage stage;
     private Scene scene;
     private Parent root;
-
+    Connection conn = null;
     @FXML
     void close(ActionEvent event) {
         // Đóng cửa sổ hiện tại
@@ -50,11 +56,12 @@ public class LoginController {
         System.out.println("minimize signal");
     }
 
-    public void login(ActionEvent event) throws IOException {
+    public void login(ActionEvent event) throws IOException, SQLException {
         String username_v = username.getText().trim();
         String password_v = password.getText().trim();
         if (username.getText().trim().equals("admin") && password.getText().trim().equals("123456")) {
             System.out.println("Login Successful");
+
         }
         else if(username_v.isEmpty() && password_v.isEmpty())
         {
@@ -70,9 +77,48 @@ public class LoginController {
             password_action.setText("Empty Password");
         }
         else {
-            username_action.setText("Incorrect Username");
-            password_action.setText("Incorrect Password");
-            System.out.println("Login Failed");
+            conn = mysqlconnect.ConnectDb();
+            if (conn == null)
+            {
+                System.out.println("Connection is NULL !!!!");
+            }
+            Statement statement = conn.createStatement();
+            ResultSet rs = statement.executeQuery("SELECT password FROM jdbc.user WHERE username = '"+ username_v +"'");
+            String passwordFromDB = "";
+            if (rs.next()) {
+                passwordFromDB = rs.getString("password");
+                System.out.println("Password: " + passwordFromDB);
+                if(passwordFromDB.equals(password_v))
+                {
+                    username.getScene().getWindow().hide();
+
+                    FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("User_Dashboard.fxml")));
+                    Parent root = loader.load();
+
+                    ResultSet rs1 = statement.executeQuery("SELECT student_name FROM jdbc.user WHERE username = '"+ username_v +"'");
+                    rs1.next();
+                    String studentname_data = rs1.getString("student_name");
+                    UserDashboard userDashboard = loader.getController();
+                    userDashboard.setUsername(studentname_data);
+
+                    Stage stage = new Stage();
+                    Scene scene = new Scene(root);
+                    stage.setTitle("Library Management");
+                    stage.setScene(scene);
+                    stage.setResizable(false);
+                    Image icon = new Image("book.png");
+                    stage.getIcons().add(icon);
+
+                    stage.show();
+                }
+            } else {
+                passwordFromDB = "";
+                System.out.println("User not found.");
+                username_action.setText("Incorrect Username");
+                password_action.setText("Incorrect Password");
+                System.out.println("Login Failed");
+            }
+
         }
     }
     public void register(ActionEvent event) throws IOException

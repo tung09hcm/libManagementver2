@@ -15,6 +15,8 @@ public class CardController {
     @FXML
     private Label bookname;
     @FXML
+    private Label returndate;
+    @FXML
     private HBox box;
     @FXML
     private ImageView bookimage;
@@ -26,12 +28,14 @@ public class CardController {
 
         bookname.setText(book.getName());
         author.setText(book.getAuthor());
+        returndate.setText(book.getReturndate());
 
     }
     public void getInfromationofCard()
     {
         System.out.println("bookname: " + bookname.getText());
         System.out.println("author: " + author.getText());
+        System.out.println("returndate: " + returndate.getText());
         System.out.println("===============================");
     }
 

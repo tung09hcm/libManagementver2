@@ -30,10 +30,10 @@ public class UserDashboard implements Initializable {
             for (Book book : recentlyAdded) {
                 FXMLLoader fxmlLoader = new FXMLLoader();
                 fxmlLoader.setLocation(getClass().getResource("/com/example/libmanagement/BookSample.fxml"));
-                System.out.println("pass thourgh setlocation");
+                // System.out.println("pass thourgh setlocation");
 
                 HBox cardBox = fxmlLoader.load();
-                System.out.println("pass thourgh load");
+                // System.out.println("pass thourgh load");
 
                 CardController cardController = fxmlLoader.getController();
                 cardController.setData(book);
@@ -44,12 +44,13 @@ public class UserDashboard implements Initializable {
             for (Book book : recentlyAdded) {
                 FXMLLoader fxmlLoader = new FXMLLoader();
                 fxmlLoader.setLocation(getClass().getResource("/com/example/libmanagement/BookSample.fxml"));
-                System.out.println("pass thourgh setlocation");
+                // System.out.println("pass thourgh setlocation");
 
                 HBox cardBox = fxmlLoader.load();
-                System.out.println("pass thourgh load");
+                // System.out.println("pass thourgh load");
 
                 CardController cardController = fxmlLoader.getController();
+                book.setReturndate("");
                 cardController.setData(book);
 
                 cardlayout1.getChildren().add(cardBox);
@@ -74,6 +75,7 @@ public class UserDashboard implements Initializable {
                 "Humankind");
         book.setAuthor("Yuval Noah Harari\n");
         book.setImageSrc("/books/history_of_human.png");
+        book.setReturndate("20/6/2024");
         ls.add(book);
 
         Book book1 = new Book();

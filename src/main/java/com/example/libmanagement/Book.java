@@ -5,6 +5,7 @@ public class Book {
     private String author;
     private String ImageSrc;
     private String id;
+    private String returndate;
     public Book()
     {}
 
@@ -13,6 +14,14 @@ public class Book {
         this.author = author;
         ImageSrc = imageSrc;
         this.id = id;
+    }
+
+    public String getReturndate() {
+        return returndate;
+    }
+
+    public void setReturndate(String returndate) {
+        this.returndate = returndate;
     }
 
     public String getName() {
