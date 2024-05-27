@@ -1,15 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <ScrollPane layoutX="172.0" layoutY="58.0" prefHeight="200.0" prefWidth="200.0">
-        <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0" styleClass="increment-button" stylesheets="@style.css" />
-        </content>
+      <ScrollPane layoutX="97.0" layoutY="55.0" prefHeight="290.0" prefWidth="396.0" stylesheets="@style.css">
+         <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="540.0" prefWidth="607.0" styleClass="scroll-bar" stylesheets="@style.css">
+               <children>
+                  <ImageView fitHeight="469.0" fitWidth="627.0" layoutX="4.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../../../../../Pictures/Saved%20Pictures/z5465049790999_f4cad40eb774e339f3a457ae27357454.jpg" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+         </content>
       </ScrollPane>
    </children>
 </AnchorPane>
