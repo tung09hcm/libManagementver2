@@ -2,18 +2,24 @@ package com.example.libmanagement.user;
 
 import com.example.libmanagement.Book;
 import com.example.libmanagement.CardController;
+import com.example.libmanagement.CardDisplayController;
 import com.example.libmanagement.Login;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
+import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -26,9 +32,11 @@ import java.util.ResourceBundle;
 import com.jfoenix.controls.JFXButton;
 public class UserDashboard implements Initializable {
     @FXML
+    private ScrollPane scrollpane0;
+    @FXML
     private HBox cardlayout;
     @FXML
-    private HBox cardlayout1;
+    private GridPane bookcontainer;
     @FXML
     private Label username;
 
@@ -57,6 +65,14 @@ public class UserDashboard implements Initializable {
         CatagoryPanel.setVisible(false);
         recentlyAdded = new ArrayList<>(recentlyAdd());
         recommendBook = new ArrayList<>(recommendAdd());
+        scrollpane0.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+        scrollpane0.addEventFilter(ScrollEvent.SCROLL, event -> {
+            if (event.getDeltaY() != 0) {
+                event.consume();
+            }
+        });
+        int column = 0;
+        int row = 1;
         try {
             for (Book book : recentlyAdded) {
                 FXMLLoader fxmlLoader = new FXMLLoader();
@@ -74,18 +90,23 @@ public class UserDashboard implements Initializable {
             }
             for (Book book : recommendBook) {
                 FXMLLoader fxmlLoader = new FXMLLoader();
-                fxmlLoader.setLocation(getClass().getResource("/com/example/libmanagement/BookSample.fxml"));
+                fxmlLoader.setLocation(getClass().getResource("/com/example/libmanagement/BookDisplay.fxml"));
                 // System.out.println("pass thourgh setlocation");
 
-                HBox cardBox = fxmlLoader.load();
+                VBox bookBox = fxmlLoader.load();
                 // System.out.println("pass thourgh load");
 
-                CardController cardController = fxmlLoader.getController();
-                book.setReturndate("");
-                cardController.setData(book);
+                CardDisplayController cardDisplayController = fxmlLoader.getController();
+                cardDisplayController.setData(book);
 
-                cardlayout1.getChildren().add(cardBox);
+                if(column == 5)
+                {
+                    column = 0;
+                    ++row;
+                }
 
+                bookcontainer.add(bookBox,column++,row);
+                GridPane.setMargin(bookBox, new Insets(10));
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -161,6 +182,11 @@ public class UserDashboard implements Initializable {
         book3.setImageSrc("/books/angel3.png");
         ls.add(book3);
 
+        Book book4 = new Book();
+        book4.setName("No game \n\t No life 6");
+        book4.setAuthor("Yuu Kamiya\n");
+        book4.setImageSrc("/books/ngnl6.png");
+        ls.add(book4);
         return ls;
     }
     private List<Book> recommendAdd()
@@ -193,11 +219,17 @@ public class UserDashboard implements Initializable {
         book3.setImageSrc("/books/angel3.png");
         ls.add(book3);
 
-//        Book book4 = new Book();
-//        book4.setName("No game \n\t No life 6");
-//        book4.setAuthor("Yuu Kamiya\n");
-//        book4.setImageSrc("/books/ngnl6.png");
-//        ls.add(book4);
+        Book book4 = new Book();
+        book4.setName("No game \n\t No life 6");
+        book4.setAuthor("Yuu Kamiya\n");
+        book4.setImageSrc("/books/ngnl6.png");
+        ls.add(book4);
+
+        Book book5 = new Book();
+        book5.setName("Angel Next Door 5");
+        book5.setAuthor("Saekisan\n");
+        book5.setImageSrc("/books/angel5.png");
+        ls.add(book5);
 
         return ls;
     }

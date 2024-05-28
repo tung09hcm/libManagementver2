@@ -127,7 +127,7 @@ public class RegisterController implements Initializable {
             Parent root = loader.load();
 
             UserDashboard userDashboard = loader.getController();
-            userDashboard.setUsername(studentname_data);
+            userDashboard.setUsername(username_data);
 
             Stage stage = new Stage();
             Scene scene = new Scene(root);

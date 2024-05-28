@@ -34,6 +34,7 @@ public class LoginController {
     @FXML
     private Label username_action;
 
+
     private Stage stage;
     private Scene scene;
     private Parent root;
@@ -95,11 +96,9 @@ public class LoginController {
                     FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("User_Dashboard.fxml")));
                     Parent root = loader.load();
 
-                    ResultSet rs1 = statement.executeQuery("SELECT student_name FROM jdbc.user WHERE username = '"+ username_v +"'");
-                    rs1.next();
-                    String studentname_data = rs1.getString("student_name");
+
                     UserDashboard userDashboard = loader.getController();
-                    userDashboard.setUsername(studentname_data);
+                    userDashboard.setUsername(username_v);
 
                     Stage stage = new Stage();
                     Scene scene = new Scene(root);

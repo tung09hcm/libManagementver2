@@ -2,6 +2,7 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -100,8 +101,20 @@
                   <Font name="Berlin Sans FB" size="20.0" />
                </font>
             </Label>
-            <HBox fx:id="cardlayout" alignment="CENTER_LEFT" layoutX="14.0" layoutY="48.0" prefHeight="244.0" prefWidth="1098.0" spacing="15.0" />
-            <HBox fx:id="cardlayout1" layoutX="14.0" layoutY="336.0" prefHeight="410.0" prefWidth="1098.0" spacing="15.0" />
+            <ScrollPane fx:id="scrollpane0" layoutX="14.0" layoutY="54.0" prefHeight="234.0" prefWidth="1098.0" style="-fx-background-color: #3D3D3D;" stylesheets="@style.css" vbarPolicy="NEVER">
+               <content>
+                  <HBox fx:id="cardlayout" alignment="CENTER_LEFT" prefHeight="244.0" prefWidth="1232.0" spacing="15.0" style="-fx-background-color: #3D3D3D;" />
+               </content>
+            </ScrollPane>
+            <ScrollPane hbarPolicy="NEVER" layoutX="14.0" layoutY="329.0" prefHeight="429.0" prefWidth="1098.0" style="-fx-background-color: transparent;" stylesheets="@style.css">
+               <content>
+                  <GridPane fx:id="bookcontainer" blendMode="DARKEN" hgap="20.0" prefHeight="0.0" prefWidth="0.0" style="-fx-background-color: #3D3D3D;">
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                  </GridPane>
+               </content>
+            </ScrollPane>
          </children>
       </AnchorPane>
       <AnchorPane fx:id="CatagoryPanel" layoutX="169.0" layoutY="44.0" prefHeight="758.0" prefWidth="1135.0" style="-fx-background-color: #3D3D3D;" visible="false" />

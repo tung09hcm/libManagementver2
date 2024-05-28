@@ -1,0 +1,19 @@
+.transparent
+{
+    -fx-background-color:  rgba(0,0,0,0);
+}
+
+.selected
+{
+    -fx-background-color:  #4a4848;
+}
+
+.mouse_moved: hover
+{
+    -fx-background-color: #3cc78d;
+}
+
+.base_color
+{
+    -fx-background-color: #fcba03;
+}
