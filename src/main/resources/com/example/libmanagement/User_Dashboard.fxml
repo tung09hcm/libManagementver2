@@ -97,7 +97,7 @@
       </AnchorPane>
       <AnchorPane fx:id="CatagoryPanel_Reference" layoutX="169.0" layoutY="44.0" prefHeight="758.0" prefWidth="1135.0" style="-fx-background-color: #3D3D3D;">
          <children>
-            <ScrollPane fx:id="CatagoryReference" hbarPolicy="NEVER" layoutX="14.0" layoutY="83.0" prefHeight="665.0" prefWidth="1098.0" style="-fx-background-color: transparent;" stylesheets="@style.css">
+            <ScrollPane fx:id="CatagoryReference" hbarPolicy="NEVER" layoutX="14.0" layoutY="83.0" prefHeight="665.0" prefWidth="1098.0" style="-fx-background-color: transparent;" stylesheets="@style.css" visible="false">
                <content>
                   <GridPane fx:id="referencecontainer" blendMode="DARKEN" hgap="20.0" prefHeight="0.0" prefWidth="0.0" style="-fx-background-color: #3D3D3D;">
                      <rowConstraints>
@@ -106,24 +106,51 @@
                   </GridPane>
                </content>
             </ScrollPane>
+            <ScrollPane fx:id="TextBookReference" hbarPolicy="NEVER" layoutX="14.0" layoutY="83.0" prefHeight="665.0" prefWidth="1098.0" style="-fx-background-color: transparent;" stylesheets="@style.css" visible="false">
+               <content>
+                  <GridPane fx:id="textcontainer" blendMode="DARKEN" hgap="20.0" prefHeight="0.0" prefWidth="0.0" style="-fx-background-color: #3D3D3D;">
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                  </GridPane>
+               </content>
+            </ScrollPane>
+            <ScrollPane fx:id="WorkbookReference" hbarPolicy="NEVER" layoutX="14.0" layoutY="83.0" prefHeight="665.0" prefWidth="1098.0" style="-fx-background-color: transparent;" stylesheets="@style.css" visible="false">
+               <content>
+                  <GridPane fx:id="workbookcontainer" blendMode="DARKEN" hgap="20.0" prefHeight="0.0" prefWidth="0.0" style="-fx-background-color: #3D3D3D;">
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                  </GridPane>
+               </content>
+            </ScrollPane>
+            <ScrollPane fx:id="NovelReference" hbarPolicy="NEVER" layoutX="14.0" layoutY="83.0" prefHeight="665.0" prefWidth="1098.0" style="-fx-background-color: transparent;" stylesheets="@style.css" visible="false">
+               <content>
+                  <GridPane fx:id="novelcontainer" blendMode="DARKEN" hgap="20.0" prefHeight="0.0" prefWidth="0.0" style="-fx-background-color: #3D3D3D;">
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                  </GridPane>
+               </content>
+            </ScrollPane>
             <HBox layoutX="14.0" layoutY="14.0" prefHeight="100.0" prefWidth="1055.0">
                <children>
-                  <JFXButton prefHeight="54.0" prefWidth="202.0" style="-fx-background-color: #3D3D3D;" text="Reference Book ▼" textFill="WHITE">
+                  <JFXButton fx:id="reference_book_button" onAction="#switchFormCatagory" prefHeight="54.0" prefWidth="202.0" style="-fx-background-color: #3D3D3D;" text="Reference Book ▼" textFill="WHITE">
                      <font>
                         <Font name="Berlin Sans FB Bold" size="17.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton prefHeight="54.0" prefWidth="170.0" style="-fx-background-color: #3D3D3D;" text="Textbook ▼" textFill="WHITE">
+                  <JFXButton fx:id="textbook_button" onAction="#switchFormCatagory" prefHeight="54.0" prefWidth="170.0" style="-fx-background-color: #3D3D3D;" text="Textbook ▼" textFill="WHITE">
                      <font>
                         <Font name="Berlin Sans FB Bold" size="17.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton prefHeight="54.0" prefWidth="170.0" style="-fx-background-color: #3D3D3D;" text="Workbook ▼" textFill="WHITE">
+                  <JFXButton fx:id="workbook_button" onAction="#switchFormCatagory" prefHeight="54.0" prefWidth="170.0" style="-fx-background-color: #3D3D3D;" text="Workbook ▼" textFill="WHITE">
                      <font>
                         <Font name="Berlin Sans FB Bold" size="17.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton prefHeight="54.0" prefWidth="170.0" style="-fx-background-color: #3D3D3D;" text="Novel ▼" textFill="WHITE">
+                  <JFXButton fx:id="novel_button" onAction="#switchFormCatagory" prefHeight="54.0" prefWidth="170.0" style="-fx-background-color: #3D3D3D;" text="Novel ▼" textFill="WHITE">
                      <font>
                         <Font name="Berlin Sans FB Bold" size="17.0" />
                      </font>

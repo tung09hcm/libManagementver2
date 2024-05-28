@@ -32,29 +32,67 @@ import java.util.ResourceBundle;
 import com.jfoenix.controls.JFXButton;
 public class UserDashboard implements Initializable {
     @FXML
-    private ScrollPane scrollpane0;
-    @FXML
-    private HBox cardlayout;
-    @FXML
-    private GridPane bookcontainer;
-    @FXML
-    private GridPane referencecontainer;
-    @FXML
-    private Label username;
+    private JFXButton BorrowedButton;
 
     @FXML
-    private AnchorPane HomePane;
+    private JFXButton CatagoryButton;
+
     @FXML
     private AnchorPane CatagoryPanel_Reference;
+
     @FXML
     private ScrollPane CatagoryReference;
 
     @FXML
-    private JFXButton BorrowedButton;
-    @FXML
-    private JFXButton CatagoryButton;
-    @FXML
     private JFXButton HomeButton;
+
+    @FXML
+    private AnchorPane HomePane;
+
+    @FXML
+    private ScrollPane NovelReference;
+
+    @FXML
+    private ScrollPane TextBookReference;
+
+    @FXML
+    private ScrollPane WorkbookReference;
+
+    @FXML
+    private GridPane bookcontainer;
+
+    @FXML
+    private HBox cardlayout;
+
+    @FXML
+    private JFXButton novel_button;
+
+    @FXML
+    private GridPane novelcontainer;
+
+    @FXML
+    private JFXButton reference_book_button;
+
+    @FXML
+    private GridPane referencecontainer;
+
+    @FXML
+    private ScrollPane scrollpane0;
+
+    @FXML
+    private JFXButton textbook_button;
+
+    @FXML
+    private GridPane textcontainer;
+
+    @FXML
+    private Label username;
+
+    @FXML
+    private JFXButton workbook_button;
+
+    @FXML
+    private GridPane workbookcontainer;
     private List<Book> recentlyAdded;
     private List<Book> recommendBook;
     private Stage stage;
@@ -119,8 +157,7 @@ public class UserDashboard implements Initializable {
         username.setText(username_v);
     }
     public void switchForm(ActionEvent e) throws IOException {
-        int column = 0;
-        int row = 1;
+
         System.out.println("==================================");
         System.out.println("switchform signa");
         System.out.println("Source: " + e.getSource().toString());
@@ -131,6 +168,8 @@ public class UserDashboard implements Initializable {
             HomePane.setVisible(false);
             CatagoryPanel_Reference.setVisible(true);
             CatagoryReference.setVisible(true);
+            int column = 0;
+            int row = 1;
             for (Book book : recommendBook) {
                 FXMLLoader fxmlLoader = new FXMLLoader();
                 fxmlLoader.setLocation(getClass().getResource("/com/example/libmanagement/BookDisplay.fxml"));
@@ -164,6 +203,37 @@ public class UserDashboard implements Initializable {
         }
         else {
             System.out.println("something went wrong");
+        }
+    }
+    public void switchFormCatagory(ActionEvent e) throws IOException
+    {
+        if(e.getSource() == reference_book_button)
+        {
+            CatagoryReference.setVisible(true);
+            TextBookReference.setVisible(false);
+            WorkbookReference.setVisible(false);
+            NovelReference.setVisible(false);
+        }
+        else if(e.getSource() == textbook_button)
+        {
+            CatagoryReference.setVisible(false);
+            TextBookReference.setVisible(true);
+            WorkbookReference.setVisible(false);
+            NovelReference.setVisible(false);
+        }
+        else if(e.getSource() == workbook_button)
+        {
+            CatagoryReference.setVisible(false);
+            TextBookReference.setVisible(false);
+            WorkbookReference.setVisible(true);
+            NovelReference.setVisible(false);
+        }
+        else if(e.getSource() == novel_button)
+        {
+            CatagoryReference.setVisible(false);
+            TextBookReference.setVisible(false);
+            WorkbookReference.setVisible(false);
+            NovelReference.setVisible(true);
         }
     }
     private List<Book> recentlyAdd()
