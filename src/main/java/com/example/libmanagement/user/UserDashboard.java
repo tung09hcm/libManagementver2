@@ -166,6 +166,7 @@ public class UserDashboard implements Initializable {
         {
             System.out.println("CatagoryButton signal");
             HomePane.setVisible(false);
+            reference_book_button.setStyle("-fx-background-color: #727475;");
             CatagoryPanel_Reference.setVisible(true);
             CatagoryReference.setVisible(true);
             int column = 0;
@@ -213,6 +214,12 @@ public class UserDashboard implements Initializable {
             TextBookReference.setVisible(false);
             WorkbookReference.setVisible(false);
             NovelReference.setVisible(false);
+
+            reference_book_button.setStyle("-fx-background-color: #727475;");
+            textbook_button.setStyle("-fx-background-color: transparent;");
+            workbook_button.setStyle("-fx-background-color: transparent;");
+            novel_button.setStyle("-fx-background-color: transparent;");
+
         }
         else if(e.getSource() == textbook_button)
         {
@@ -220,6 +227,11 @@ public class UserDashboard implements Initializable {
             TextBookReference.setVisible(true);
             WorkbookReference.setVisible(false);
             NovelReference.setVisible(false);
+
+            reference_book_button.setStyle("-fx-background-color: transparent;");
+            textbook_button.setStyle("-fx-background-color: #727475;");
+            workbook_button.setStyle("-fx-background-color: transparent;");
+            novel_button.setStyle("-fx-background-color: transparent;");
         }
         else if(e.getSource() == workbook_button)
         {
@@ -227,6 +239,11 @@ public class UserDashboard implements Initializable {
             TextBookReference.setVisible(false);
             WorkbookReference.setVisible(true);
             NovelReference.setVisible(false);
+
+            reference_book_button.setStyle("-fx-background-color: transparent;");
+            textbook_button.setStyle("-fx-background-color: transparent;");
+            workbook_button.setStyle("-fx-background-color: #727475;");
+            novel_button.setStyle("-fx-background-color: transparent;");
         }
         else if(e.getSource() == novel_button)
         {
@@ -234,6 +251,11 @@ public class UserDashboard implements Initializable {
             TextBookReference.setVisible(false);
             WorkbookReference.setVisible(false);
             NovelReference.setVisible(true);
+
+            reference_book_button.setStyle("-fx-background-color: transparent;");
+            textbook_button.setStyle("-fx-background-color: transparent;");
+            workbook_button.setStyle("-fx-background-color: transparent;");
+            novel_button.setStyle("-fx-background-color: #727475;");
         }
     }
     private List<Book> recentlyAdd()
