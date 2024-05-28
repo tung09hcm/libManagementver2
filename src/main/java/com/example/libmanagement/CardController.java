@@ -21,7 +21,7 @@ public class CardController {
     private HBox box;
     @FXML
     private ImageView bookimage;
-    private String [] colors = {"7b9cb0","8275d1", "cf848f","47c4a7"};
+    private String [] colors = {"7b9cb0","8275d1", "cf848f","469e8a"};
     public void setData (Book book)
     {
         Image image = new Image(Objects.requireNonNull(getClass().getResourceAsStream(book.getImageSrc())));
