@@ -23,12 +23,12 @@
          <children>
             <Label fx:id="bookname" prefHeight="20.0" prefWidth="191.0" text="No game No life 4" textFill="WHITE">
                <font>
-                  <Font name="Berlin Sans FB Bold" size="14.0" />
+                  <Font name="Arial Bold" size="14.0" />
                </font>
             </Label>
             <Label fx:id="authorname" prefHeight="14.0" prefWidth="193.0" text="Yuu Kamiya" textFill="WHITE">
                <font>
-                  <Font name="Berlin Sans FB" size="12.0" />
+                  <Font name="Arial" size="12.0" />
                </font>
             </Label>
          </children>

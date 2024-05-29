@@ -1,9 +1,6 @@
 package com.example.libmanagement.user;
 
-import com.example.libmanagement.Book;
-import com.example.libmanagement.CardController;
-import com.example.libmanagement.CardDisplayController;
-import com.example.libmanagement.Login;
+import com.example.libmanagement.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -25,6 +22,10 @@ import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -95,6 +96,8 @@ public class UserDashboard implements Initializable {
     private GridPane workbookcontainer;
     private List<Book> recentlyAdded;
     private List<Book> recommendBook;
+    private List<Book> catagory_reference;
+    private List<Book> catagory_workbook;
     private Stage stage;
     private Scene scene;
     @Override
@@ -104,6 +107,14 @@ public class UserDashboard implements Initializable {
         CatagoryReference.setVisible(false);
         recentlyAdded = new ArrayList<>(recentlyAdd());
         recommendBook = new ArrayList<>(recommendAdd());
+
+        try {
+            catagory_reference = new ArrayList<>(catagory_textbook_Add());
+            catagory_workbook = new ArrayList<>(catagory_Add("workbook"));
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
         scrollpane0.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
         scrollpane0.addEventFilter(ScrollEvent.SCROLL, event -> {
             if (event.getDeltaY() != 0) {
@@ -149,7 +160,7 @@ public class UserDashboard implements Initializable {
                 bookcontainer.add(bookBox,column++,row);
                 GridPane.setMargin(bookBox, new Insets(10));
             }
-            for (Book book : recommendBook) {
+            for (Book book : catagory_reference) {
                 FXMLLoader fxmlLoader = new FXMLLoader();
                 fxmlLoader.setLocation(getClass().getResource("/com/example/libmanagement/BookDisplay.fxml"));
                 // System.out.println("pass thourgh setlocation");
@@ -166,6 +177,29 @@ public class UserDashboard implements Initializable {
                     ++row_catagory;
                 }
                 referencecontainer.add(bookBox,column_catagory++,row_catagory);
+//                textcontainer.add(bookBox,column_catagory++,row_catagory);
+//                workbookcontainer.add(bookBox,column_catagory++,row_catagory);
+//                novelcontainer.add(bookBox,column_catagory++,row_catagory);
+                GridPane.setMargin(bookBox, new Insets(10));
+            }
+            column_catagory = 0; row_catagory = 1;
+            for (Book book : catagory_workbook) {
+                FXMLLoader fxmlLoader = new FXMLLoader();
+                fxmlLoader.setLocation(getClass().getResource("/com/example/libmanagement/BookDisplay.fxml"));
+                // System.out.println("pass thourgh setlocation");
+
+                VBox bookBox = fxmlLoader.load();
+                // System.out.println("pass thourgh load");
+
+                CardDisplayController cardDisplayController = fxmlLoader.getController();
+                cardDisplayController.setData(book);
+
+                if(column_catagory == 5)
+                {
+                    column_catagory = 0;
+                    ++row_catagory;
+                }
+                textcontainer.add(bookBox,column_catagory++,row_catagory);
                 GridPane.setMargin(bookBox, new Insets(10));
             }
         } catch (IOException e) {
@@ -339,50 +373,47 @@ public class UserDashboard implements Initializable {
 
         return ls;
     }
-    private List<Book> catagory_reference_Add()
-    {
+    private List<Book> catagory_textbook_Add() throws SQLException {
         List<Book> ls = new ArrayList<>();
-
-        Book book = new Book();
-        book.setName("A Brief History of " +
-                "Humankind");
-        book.setAuthor("Yuval Noah Harari");
-        book.setImageSrc("/books/history_of_human.png");
-        book.setReturndate("20/6/2024");
-        ls.add(book);
-
-        Book book1 = new Book();
-        book1.setName("No gam No life 4");
-        book1.setAuthor("Yuu Kamiya");
-        book1.setImageSrc("/books/ngnl4.png");
-        ls.add(book1);
-
-        Book book2 = new Book();
-        book2.setName("No game No life 5");
-        book2.setAuthor("Yuu Kamiya");
-        book2.setImageSrc("/books/ngnl5.png");
-        ls.add(book2);
-
-        Book book3 = new Book();
-        book3.setName("Angel Next Door 3");
-        book3.setAuthor("Saekisan");
-        book3.setImageSrc("/books/angel3.png");
-        ls.add(book3);
-
-        Book book4 = new Book();
-        book4.setName("No game No life 6");
-        book4.setAuthor("Yuu Kamiya");
-        book4.setImageSrc("/books/ngnl6.png");
-        ls.add(book4);
-
-        Book book5 = new Book();
-        book5.setName("Angel Next Door 5");
-        book5.setAuthor("Saekisan");
-        book5.setImageSrc("/books/angel5.png");
-        ls.add(book5);
+        Connection conn = mysqlconnect.ConnectDb();
+        if (conn == null)
+        {
+            System.out.println("Connection is NULL !!!!");
+        }
+        assert conn != null;
+        Statement statement = conn.createStatement();
+        ResultSet rs = statement.executeQuery("SELECT * FROM jdbc.textbook");
+        while(rs.next())
+        {
+            Book book = new Book();
+            book.setName(rs.getString("name"));
+            book.setAuthor(rs.getString("author"));
+            book.setImageSrc(rs.getString("image_src"));
+            ls.add(book);
+        }
 
         return ls;
     }
+    private List<Book> catagory_Add(String target) throws SQLException {
+        List<Book> ls = new ArrayList<>();
+        Connection conn = mysqlconnect.ConnectDb();
+        if (conn == null)
+        {
+            System.out.println("Connection is NULL !!!!");
+        }
+        assert conn != null;
+        Statement statement = conn.createStatement();
+        ResultSet rs = statement.executeQuery("SELECT * FROM jdbc." + target);
+        while(rs.next())
+        {
+            Book book = new Book();
+            book.setName(rs.getString("name"));
+            book.setAuthor(rs.getString("author"));
+            book.setImageSrc(rs.getString("image_src"));
+            ls.add(book);
+        }
 
+        return ls;
+    }
 
 }
