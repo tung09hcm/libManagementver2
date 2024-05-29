@@ -112,6 +112,8 @@ public class UserDashboard implements Initializable {
         });
         int column = 0;
         int row = 1;
+        int column_catagory = 0;
+        int row_catagory = 1;
         try {
             for (Book book : recentlyAdded) {
                 FXMLLoader fxmlLoader = new FXMLLoader();
@@ -147,6 +149,25 @@ public class UserDashboard implements Initializable {
                 bookcontainer.add(bookBox,column++,row);
                 GridPane.setMargin(bookBox, new Insets(10));
             }
+            for (Book book : recommendBook) {
+                FXMLLoader fxmlLoader = new FXMLLoader();
+                fxmlLoader.setLocation(getClass().getResource("/com/example/libmanagement/BookDisplay.fxml"));
+                // System.out.println("pass thourgh setlocation");
+
+                VBox bookBox = fxmlLoader.load();
+                // System.out.println("pass thourgh load");
+
+                CardDisplayController cardDisplayController = fxmlLoader.getController();
+                cardDisplayController.setData(book);
+
+                if(column_catagory == 5)
+                {
+                    column_catagory = 0;
+                    ++row_catagory;
+                }
+                referencecontainer.add(bookBox,column_catagory++,row_catagory);
+                GridPane.setMargin(bookBox, new Insets(10));
+            }
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -169,28 +190,7 @@ public class UserDashboard implements Initializable {
             reference_book_button.setStyle("-fx-background-color: #727475;");
             CatagoryPanel_Reference.setVisible(true);
             CatagoryReference.setVisible(true);
-            int column = 0;
-            int row = 1;
-            for (Book book : recommendBook) {
-                FXMLLoader fxmlLoader = new FXMLLoader();
-                fxmlLoader.setLocation(getClass().getResource("/com/example/libmanagement/BookDisplay.fxml"));
-                // System.out.println("pass thourgh setlocation");
 
-                VBox bookBox = fxmlLoader.load();
-                // System.out.println("pass thourgh load");
-
-                CardDisplayController cardDisplayController = fxmlLoader.getController();
-                cardDisplayController.setData(book);
-
-                if(column == 5)
-                {
-                    column = 0;
-                    ++row;
-                }
-
-                referencecontainer.add(bookBox,column++,row);
-                GridPane.setMargin(bookBox, new Insets(10));
-            }
         }
         else if (e.getSource() == BorrowedButton)
         {
@@ -339,5 +339,50 @@ public class UserDashboard implements Initializable {
 
         return ls;
     }
+    private List<Book> catagory_reference_Add()
+    {
+        List<Book> ls = new ArrayList<>();
+
+        Book book = new Book();
+        book.setName("A Brief History of " +
+                "Humankind");
+        book.setAuthor("Yuval Noah Harari");
+        book.setImageSrc("/books/history_of_human.png");
+        book.setReturndate("20/6/2024");
+        ls.add(book);
+
+        Book book1 = new Book();
+        book1.setName("No gam No life 4");
+        book1.setAuthor("Yuu Kamiya");
+        book1.setImageSrc("/books/ngnl4.png");
+        ls.add(book1);
+
+        Book book2 = new Book();
+        book2.setName("No game No life 5");
+        book2.setAuthor("Yuu Kamiya");
+        book2.setImageSrc("/books/ngnl5.png");
+        ls.add(book2);
+
+        Book book3 = new Book();
+        book3.setName("Angel Next Door 3");
+        book3.setAuthor("Saekisan");
+        book3.setImageSrc("/books/angel3.png");
+        ls.add(book3);
+
+        Book book4 = new Book();
+        book4.setName("No game No life 6");
+        book4.setAuthor("Yuu Kamiya");
+        book4.setImageSrc("/books/ngnl6.png");
+        ls.add(book4);
+
+        Book book5 = new Book();
+        book5.setName("Angel Next Door 5");
+        book5.setAuthor("Saekisan");
+        book5.setImageSrc("/books/angel5.png");
+        ls.add(book5);
+
+        return ls;
+    }
+
 
 }
