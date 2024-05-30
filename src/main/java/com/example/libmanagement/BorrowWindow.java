@@ -47,6 +47,37 @@ public class BorrowWindow implements Initializable {
             Statement statement = conn.createStatement();
 
             ResultSet rs = statement.executeQuery(SQLCommand("novel"));
+            if(!rs.next())
+            {
+                ResultSet rs1 = statement.executeQuery(SQLCommand("reference_book"));
+                if(!rs1.next())
+                {
+                    ResultSet rs2 = statement.executeQuery(SQLCommand("textbook"));
+                    if(!rs2.next())
+                    {
+                        ResultSet rs3 = statement.executeQuery(SQLCommand("workbook"));
+                        if(!rs3.next())
+                        {
+                            System.out.println("Hết cứu");
+                        }
+                        else
+                        {
+                            image_v.setImage(new Image(rs3.getString("image_src")));
+                        }
+                    }
+                    else
+                    {
+                        image_v.setImage(new Image(rs2.getString("image_src")));
+                    }
+                }
+                else
+                {
+                    image_v.setImage(new Image(rs1.getString("image_src")));
+                }
+            }
+            else {
+                image_v.setImage(new Image(rs.getString("image_src")));
+            }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
