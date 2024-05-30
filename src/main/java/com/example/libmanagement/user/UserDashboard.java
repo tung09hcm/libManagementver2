@@ -98,6 +98,8 @@ public class UserDashboard implements Initializable {
     private List<Book> recommendBook;
     private List<Book> catagory_reference;
     private List<Book> catagory_workbook;
+    private List<Book> catagory_textbook;
+    private List<Book> catagory_novel;
     private Stage stage;
     private Scene scene;
     @Override
@@ -109,8 +111,10 @@ public class UserDashboard implements Initializable {
         recommendBook = new ArrayList<>(recommendAdd());
 
         try {
-            catagory_reference = new ArrayList<>(catagory_textbook_Add());
+            catagory_textbook = new ArrayList<>(catagory_textbook_Add());
             catagory_workbook = new ArrayList<>(catagory_Add("workbook"));
+            catagory_reference = new ArrayList<>(catagory_Add("reference_book"));
+            catagory_novel = new ArrayList<>(catagory_Add("novel"));
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -160,6 +164,7 @@ public class UserDashboard implements Initializable {
                 bookcontainer.add(bookBox,column++,row);
                 GridPane.setMargin(bookBox, new Insets(10));
             }
+
             for (Book book : catagory_reference) {
                 FXMLLoader fxmlLoader = new FXMLLoader();
                 fxmlLoader.setLocation(getClass().getResource("/com/example/libmanagement/BookDisplay.fxml"));
@@ -199,9 +204,50 @@ public class UserDashboard implements Initializable {
                     column_catagory = 0;
                     ++row_catagory;
                 }
+                workbookcontainer.add(bookBox,column_catagory++,row_catagory);
+                GridPane.setMargin(bookBox, new Insets(10));
+            }
+            column_catagory = 0; row_catagory = 1;
+            for (Book book : catagory_textbook) {
+                FXMLLoader fxmlLoader = new FXMLLoader();
+                fxmlLoader.setLocation(getClass().getResource("/com/example/libmanagement/BookDisplay.fxml"));
+                // System.out.println("pass thourgh setlocation");
+
+                VBox bookBox = fxmlLoader.load();
+                // System.out.println("pass thourgh load");
+
+                CardDisplayController cardDisplayController = fxmlLoader.getController();
+                cardDisplayController.setData(book);
+
+                if(column_catagory == 5)
+                {
+                    column_catagory = 0;
+                    ++row_catagory;
+                }
                 textcontainer.add(bookBox,column_catagory++,row_catagory);
                 GridPane.setMargin(bookBox, new Insets(10));
             }
+            column_catagory = 0; row_catagory = 1;
+            for (Book book : catagory_novel) {
+                FXMLLoader fxmlLoader = new FXMLLoader();
+                fxmlLoader.setLocation(getClass().getResource("/com/example/libmanagement/BookDisplay.fxml"));
+                // System.out.println("pass thourgh setlocation");
+
+                VBox bookBox = fxmlLoader.load();
+                // System.out.println("pass thourgh load");
+
+                CardDisplayController cardDisplayController = fxmlLoader.getController();
+                cardDisplayController.setData(book);
+
+                if(column_catagory == 5)
+                {
+                    column_catagory = 0;
+                    ++row_catagory;
+                }
+                novelcontainer.add(bookBox,column_catagory++,row_catagory);
+                GridPane.setMargin(bookBox, new Insets(10));
+            }
+
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

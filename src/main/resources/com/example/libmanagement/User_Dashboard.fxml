@@ -97,9 +97,9 @@
       </AnchorPane>
       <AnchorPane fx:id="CatagoryPanel_Reference" layoutX="169.0" layoutY="44.0" prefHeight="758.0" prefWidth="1135.0" style="-fx-background-color: #3D3D3D;">
          <children>
-            <ScrollPane fx:id="CatagoryReference" hbarPolicy="NEVER" layoutX="14.0" layoutY="83.0" prefHeight="665.0" prefWidth="1098.0" style="-fx-background-color: transparent;" stylesheets="@style.css" visible="false">
+            <ScrollPane fx:id="CatagoryReference" hbarPolicy="NEVER" layoutX="14.0" layoutY="83.0" prefHeight="665.0" prefWidth="1098.0" styleClass="transparent" stylesheets="@style.css" visible="false">
                <content>
-                  <GridPane fx:id="referencecontainer" blendMode="DARKEN" hgap="20.0" prefHeight="0.0" prefWidth="0.0" style="-fx-background-color: #3D3D3D;">
+                  <GridPane fx:id="referencecontainer" blendMode="DARKEN" hgap="20.0" prefHeight="0.0" prefWidth="0.0" style="-fx-background-color: #3D3D3D;" styleClass="transparent" stylesheets="@style.css">
                      <rowConstraints>
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
