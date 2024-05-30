@@ -33,7 +33,7 @@
             </Label>
          </children>
       </VBox>
-      <JFXButton buttonType="RAISED" stylesheets="@bookstyle.css" text="More">
+      <JFXButton buttonType="RAISED" onAction="#SwitchBorrowSceneAction" stylesheets="@bookstyle.css" text="More">
          <graphic>
             <ImageView fitHeight="25.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                <image>
