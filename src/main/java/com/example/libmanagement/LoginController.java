@@ -49,6 +49,7 @@ public class LoginController {
         Platform.exit(); // Kết thúc ứng dụng JavaFX một cách gọn gàng
         System.exit(0);  // Kết thúc toàn bộ chương trình
     }
+    public static String username_vv = "";
     @FXML
     void minimize(ActionEvent event)
     {
@@ -92,13 +93,14 @@ public class LoginController {
                 if(passwordFromDB.equals(password_v))
                 {
                     username.getScene().getWindow().hide();
-
+                    username_vv = username_v;
                     FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("User_Dashboard.fxml")));
                     Parent root = loader.load();
 
 
                     UserDashboard userDashboard = loader.getController();
                     userDashboard.setUsername(username_v);
+
 
                     Stage stage = new Stage();
                     Scene scene = new Scene(root);

@@ -121,15 +121,13 @@ public class UserDashboard implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-
-
         HomePane.setVisible(true);
         Borrowed_Pane.setVisible(false);
         CatagoryPanel_Reference.setVisible(false);
         CatagoryReference.setVisible(false);
 
         System.out.println("==================================");
-        System.out.println("USER NAME 1: " + username_t);
+        System.out.println("USER NAME 1: " + LoginController.username_vv);
         System.out.println("==================================");
 
         initializeData();
@@ -171,7 +169,7 @@ public class UserDashboard implements Initializable {
                 // System.out.println("pass thourgh load");
 
                 CardController cardController = fxmlLoader.getController();
-                cardController.setUsername(username_t);
+                cardController.setUsername(LoginController.username_vv);
                 cardController.setData(book);
 
                 cardlayout.getChildren().add(cardBox);
@@ -187,6 +185,7 @@ public class UserDashboard implements Initializable {
 
                 CardDisplayController cardDisplayController = fxmlLoader.getController();
                 cardDisplayController.setData(book);
+                cardDisplayController.setUsername(LoginController.username_vv);
 
                 if(column == 5)
                 {
@@ -208,6 +207,7 @@ public class UserDashboard implements Initializable {
 
                 CardDisplayController cardDisplayController = fxmlLoader.getController();
                 cardDisplayController.setData(book);
+                cardDisplayController.setUsername(LoginController.username_vv);
 
                 if(column_catagory == 5)
                 {
@@ -231,6 +231,7 @@ public class UserDashboard implements Initializable {
 
                 CardDisplayController cardDisplayController = fxmlLoader.getController();
                 cardDisplayController.setData(book);
+                cardDisplayController.setUsername(LoginController.username_vv);
 
                 if(column_catagory == 5)
                 {
@@ -251,6 +252,7 @@ public class UserDashboard implements Initializable {
 
                 CardDisplayController cardDisplayController = fxmlLoader.getController();
                 cardDisplayController.setData(book);
+                cardDisplayController.setUsername(LoginController.username_vv);
 
                 if(column_catagory == 5)
                 {
@@ -271,7 +273,7 @@ public class UserDashboard implements Initializable {
 
                 CardDisplayController cardDisplayController = fxmlLoader.getController();
                 cardDisplayController.setData(book);
-
+                cardDisplayController.setUsername(LoginController.username_vv);
                 if(column_catagory == 5)
                 {
                     column_catagory = 0;

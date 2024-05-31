@@ -34,6 +34,7 @@ public class RegisterController implements Initializable {
     private TextField username;
 
     Connection conn = null;
+    public static String username_vv = "";
     @FXML
     void close(ActionEvent event) {
         // Đóng cửa sổ hiện tại
@@ -122,7 +123,7 @@ public class RegisterController implements Initializable {
                 throw new RuntimeException(e);
             }
             username.getScene().getWindow().hide();
-
+            username_vv = username_data;
             FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("User_Dashboard.fxml")));
             Parent root = loader.load();
 
