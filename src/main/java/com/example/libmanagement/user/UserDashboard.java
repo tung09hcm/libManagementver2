@@ -36,6 +36,9 @@ public class UserDashboard implements Initializable {
     private JFXButton BorrowedButton;
 
     @FXML
+    private AnchorPane Borrowed_Pane;
+
+    @FXML
     private JFXButton CatagoryButton;
 
     @FXML
@@ -63,6 +66,9 @@ public class UserDashboard implements Initializable {
     private GridPane bookcontainer;
 
     @FXML
+    private HBox borrowing;
+
+    @FXML
     private HBox cardlayout;
 
     @FXML
@@ -78,7 +84,16 @@ public class UserDashboard implements Initializable {
     private GridPane referencecontainer;
 
     @FXML
+    private HBox request;
+
+    @FXML
     private ScrollPane scrollpane0;
+
+    @FXML
+    private ScrollPane scrollpane_borrow;
+
+    @FXML
+    private ScrollPane scrollpane_borrow1;
 
     @FXML
     private JFXButton textbook_button;
@@ -94,21 +109,23 @@ public class UserDashboard implements Initializable {
 
     @FXML
     private GridPane workbookcontainer;
+
+
     private List<Book> recentlyAdded;
     private List<Book> recommendBook;
     private List<Book> catagory_reference;
     private List<Book> catagory_workbook;
     private List<Book> catagory_textbook;
     private List<Book> catagory_novel;
-    private Stage stage;
-    private Scene scene;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         HomePane.setVisible(true);
+        Borrowed_Pane.setVisible(false);
         CatagoryPanel_Reference.setVisible(false);
         CatagoryReference.setVisible(false);
         recentlyAdded = new ArrayList<>(recentlyAdd());
-        recommendBook = new ArrayList<>(recommendAdd());
+
 
         try {
             catagory_textbook = new ArrayList<>(catagory_textbook_Add());
@@ -144,7 +161,7 @@ public class UserDashboard implements Initializable {
                 cardlayout.getChildren().add(cardBox);
 
             }
-            for (Book book : recommendBook) {
+            for (Book book : catagory_textbook) {
                 FXMLLoader fxmlLoader = new FXMLLoader();
                 fxmlLoader.setLocation(getClass().getResource("/com/example/libmanagement/BookDisplay.fxml"));
                 // System.out.println("pass thourgh setlocation");
@@ -270,17 +287,22 @@ public class UserDashboard implements Initializable {
             reference_book_button.setStyle("-fx-background-color: #727475;");
             CatagoryPanel_Reference.setVisible(true);
             CatagoryReference.setVisible(true);
+            Borrowed_Pane.setVisible(false);
 
         }
         else if (e.getSource() == BorrowedButton)
         {
             System.out.println("BorrowedButton signal");
+            HomePane.setVisible(false);
+            CatagoryPanel_Reference.setVisible(false);
+            Borrowed_Pane.setVisible(true);
         }
         else if (e.getSource() == HomeButton)
         {
             System.out.println("HomeButton signal");
             HomePane.setVisible(true);
             CatagoryPanel_Reference.setVisible(false);
+            Borrowed_Pane.setVisible(false);
         }
         else {
             System.out.println("something went wrong");

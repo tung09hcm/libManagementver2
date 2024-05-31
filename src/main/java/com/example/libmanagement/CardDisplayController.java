@@ -11,6 +11,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Objects;
 
 public class CardDisplayController {
@@ -30,12 +31,11 @@ public class CardDisplayController {
         bookname.setText(book.getName());
         authorname.setText(book.getAuthor());
     }
-    public void SwitchBorrowSceneAction() throws IOException {
+    public void SwitchBorrowSceneAction() throws IOException, SQLException {
         FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("BorrowWindow.fxml")));
         Parent root = loader.load();
 
         BorrowWindow borrowWindow = loader.getController();
-        //Image image_data = new Image(Objects.requireNonNull(getClass().getResourceAsStream(book.getImageSrc())));
         borrowWindow.setData(bookname.getText(),authorname.getText());
 
         Stage stage = new Stage();

@@ -33,7 +33,7 @@
                   <Font name="Berlin Sans FB" size="20.0" />
                </font>
             </Label>
-            <JFXButton onAction="#getInfromationofCard" stylesheets="@bookstyle.css" text="More">
+            <JFXButton onAction="#getInfromationofCard" stylesheets="@bookstyle.css" text="Return">
                <graphic>
                   <ImageView fitHeight="25.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                      <image>

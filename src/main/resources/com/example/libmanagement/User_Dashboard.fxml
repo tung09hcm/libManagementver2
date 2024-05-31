@@ -58,7 +58,7 @@
                         <Font name="System Bold" size="16.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton fx:id="BorrowedButton" alignment="CENTER_RIGHT" prefHeight="76.0" prefWidth="143.0" styleClass="mouse_moved" stylesheets="@stylesheet.css" text="Borrowed" textFill="#f7f7f7" GridPane.rowIndex="2">
+                  <JFXButton fx:id="BorrowedButton" alignment="CENTER_RIGHT" onAction="#switchForm" prefHeight="76.0" prefWidth="143.0" styleClass="mouse_moved" stylesheets="@stylesheet.css" text="Borrowed" textFill="#f7f7f7" GridPane.rowIndex="2">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>
@@ -67,7 +67,7 @@
             </GridPane>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="HomePane" layoutX="169.0" layoutY="44.0" prefHeight="758.0" prefWidth="1135.0" style="-fx-background-color: #3D3D3D;" visible="false">
+      <AnchorPane fx:id="HomePane" layoutX="169.0" layoutY="44.0" prefHeight="758.0" prefWidth="1135.0" style="-fx-background-color: #3D3D3D;">
          <children>
             <Label layoutX="14.0" layoutY="14.0" prefHeight="62.0" prefWidth="306.0" text="Recently Add" textFill="WHITE">
                <font>
@@ -95,7 +95,7 @@
             </ScrollPane>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="CatagoryPanel_Reference" layoutX="169.0" layoutY="44.0" prefHeight="758.0" prefWidth="1135.0" style="-fx-background-color: #3D3D3D;">
+      <AnchorPane fx:id="CatagoryPanel_Reference" layoutX="169.0" layoutY="44.0" prefHeight="758.0" prefWidth="1135.0" style="-fx-background-color: #3D3D3D;" visible="false">
          <children>
             <ScrollPane fx:id="CatagoryReference" hbarPolicy="NEVER" layoutX="14.0" layoutY="83.0" prefHeight="665.0" prefWidth="1098.0" styleClass="transparent" stylesheets="@style.css" visible="false">
                <content>
@@ -158,6 +158,30 @@
                </children>
             </HBox>
          </children></AnchorPane>
+      <AnchorPane fx:id="Borrowed_Pane" layoutX="169.0" layoutY="54.0" prefHeight="758.0" prefWidth="1135.0" style="-fx-background-color: #3D3D3D;">
+         <children>
+            <Label layoutX="14.0" layoutY="14.0" prefHeight="62.0" prefWidth="306.0" text="Request" textFill="WHITE">
+               <font>
+                  <Font name="Berlin Sans FB" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="14.0" layoutY="286.0" prefHeight="62.0" prefWidth="306.0" text="Borrowing" textFill="WHITE">
+               <font>
+                  <Font name="Berlin Sans FB" size="20.0" />
+               </font>
+            </Label>
+            <ScrollPane fx:id="scrollpane_borrow" layoutX="14.0" layoutY="54.0" prefHeight="234.0" prefWidth="1098.0" style="-fx-background-color: #3D3D3D;" stylesheets="@style.css" vbarPolicy="NEVER">
+               <content>
+                  <HBox fx:id="cardlayout1" alignment="CENTER_LEFT" prefHeight="244.0" prefWidth="1232.0" spacing="15.0" style="-fx-background-color: #3D3D3D;" />
+               </content>
+            </ScrollPane>
+            <ScrollPane fx:id="scrollpane_borrow1" layoutX="14.0" layoutY="348.0" prefHeight="234.0" prefWidth="1098.0" style="-fx-background-color: #3D3D3D;" stylesheets="@style.css" vbarPolicy="NEVER">
+               <content>
+                  <HBox fx:id="cardlayout11" alignment="CENTER_LEFT" prefHeight="244.0" prefWidth="1232.0" spacing="15.0" style="-fx-background-color: #3D3D3D;" />
+               </content>
+            </ScrollPane>
+         </children>
+      </AnchorPane>
       <HBox alignment="CENTER" layoutX="169.0" layoutY="3.0" prefHeight="28.0" prefWidth="265.0">
          <children>
             <TextField prefHeight="26.0" prefWidth="244.0" style="-fx-background-color: #3D3D3D; -fx-text-fill: #fffdfc;">

@@ -10,34 +10,28 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<HBox fillHeight="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="572.0" style="-fx-background-color: #2e3030;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.libmanagement.BorrowWindow">
+<HBox fillHeight="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="572.0" style="-fx-background-color: #2e3030;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.libmanagement.BorrowWindow">
    <children>
-      <ImageView fx:id="image_v" fitHeight="401.0" fitWidth="318.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../novel/history_of_human.png" />
-         </image>
-      </ImageView>
-      <VBox alignment="BOTTOM_RIGHT" fillWidth="false" prefHeight="422.0" prefWidth="356.0">
+      <VBox alignment="BOTTOM_RIGHT" fillWidth="false" prefHeight="250.0" prefWidth="582.0">
          <children>
-            <Label fx:id="bookname" prefHeight="145.0" prefWidth="310.0" text="A Brief History of &#10;Humankind" textFill="WHITE">
+            <Label fx:id="bookname" prefHeight="106.0" prefWidth="565.0" text="A Brief History of Humankind" textFill="WHITE">
                <font>
                   <Font name="Times New Roman Bold" size="34.0" />
                </font>
             </Label>
-            <Label fx:id="author" prefHeight="68.0" prefWidth="316.0" text="Yuval Noah Harari&#10;" textFill="WHITE">
+            <Label fx:id="author" prefHeight="30.0" prefWidth="564.0" text="Yuval Noah Harari&#10;" textFill="WHITE">
                <font>
                   <Font name="Times New Roman" size="25.0" />
                </font>
             </Label>
-            <Label fx:id="amount" prefHeight="51.0" prefWidth="316.0" text="Amount: 50&#10;" textFill="WHITE">
+            <Label fx:id="amount" prefHeight="32.0" prefWidth="562.0" text="Amount: &#10;" textFill="WHITE">
                <font>
                   <Font name="Times New Roman" size="25.0" />
                </font>
             </Label>
-            <HBox alignment="CENTER_LEFT" prefHeight="58.0" prefWidth="316.0">
+            <HBox alignment="CENTER_LEFT" prefHeight="41.0" prefWidth="564.0">
                <children>
-                  <Label prefHeight="32.0" prefWidth="310.0" text="Return date:" textFill="WHITE">
+                  <Label prefHeight="32.0" prefWidth="263.0" text="Return date:" textFill="WHITE">
                      <font>
                         <Font name="Berlin Sans FB" size="25.0" />
                      </font>
@@ -49,7 +43,7 @@
                   </TextField>
                </children>
             </HBox>
-            <JFXButton prefHeight="54.0" prefWidth="114.0" stylesheets="@bookstyle.css" text="Borrow" textFill="WHITE">
+            <JFXButton onAction="#BorrowAction" prefHeight="54.0" prefWidth="114.0" stylesheets="@bookstyle.css" text="Borrow" textFill="WHITE">
                <graphic>
                   <ImageView fitHeight="25.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                      <image>
