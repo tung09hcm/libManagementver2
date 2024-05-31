@@ -21,6 +21,8 @@ public class CardController {
     private HBox box;
     @FXML
     private ImageView bookimage;
+
+    public String username_v;
     private String [] colors = {"7b9cb0","8275d1", "cf848f","469e8a"};
     public void setData (Book book)
     {
@@ -40,6 +42,11 @@ public class CardController {
         System.out.println("author: " + author.getText());
         System.out.println("returndate: " + returndate.getText());
         System.out.println("===============================");
+    }
+
+    public void setUsername(String username)
+    {
+        username_v = username;
     }
 
 }

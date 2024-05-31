@@ -21,6 +21,7 @@ public class CardDisplayController {
     private Label bookname;
     @FXML
     private ImageView image;
+    public String username_v;
     //public Image image_data_v;
     public void setData(Book book)
     {
@@ -32,20 +33,10 @@ public class CardDisplayController {
         authorname.setText(book.getAuthor());
     }
     public void SwitchBorrowSceneAction() throws IOException, SQLException {
-        FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("BorrowWindow.fxml")));
-        Parent root = loader.load();
-
-        BorrowWindow borrowWindow = loader.getController();
-        borrowWindow.setData(bookname.getText(),authorname.getText());
-
-        Stage stage = new Stage();
-        Scene scene = new Scene(root);
-        stage.setTitle("Library Management");
-        stage.setScene(scene);
-        stage.setResizable(false);
-        Image icon = new Image("book.png");
-        stage.getIcons().add(icon);
-
-        stage.show();
+        System.out.println("username_v_card_display_controller: " + username_v);
+    }
+    public void setUsername(String username)
+    {
+        username_v = username;
     }
 }

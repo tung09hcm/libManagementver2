@@ -117,16 +117,31 @@ public class UserDashboard implements Initializable {
     private List<Book> catagory_workbook;
     private List<Book> catagory_textbook;
     private List<Book> catagory_novel;
-
+    public String username_t;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+
+
         HomePane.setVisible(true);
         Borrowed_Pane.setVisible(false);
         CatagoryPanel_Reference.setVisible(false);
         CatagoryReference.setVisible(false);
+
+        System.out.println("==================================");
+        System.out.println("USER NAME 1: " + username_t);
+        System.out.println("==================================");
+
+        initializeData();
+
+    }
+
+    public void initializeData()
+    {
+        System.out.println("==================================");
+        System.out.println("USER NAME 2: " + username_t);
+        System.out.println("==================================");
         recentlyAdded = new ArrayList<>(recentlyAdd());
-
-
         try {
             catagory_textbook = new ArrayList<>(catagory_textbook_Add());
             catagory_workbook = new ArrayList<>(catagory_Add("workbook"));
@@ -156,6 +171,7 @@ public class UserDashboard implements Initializable {
                 // System.out.println("pass thourgh load");
 
                 CardController cardController = fxmlLoader.getController();
+                cardController.setUsername(username_t);
                 cardController.setData(book);
 
                 cardlayout.getChildren().add(cardBox);
@@ -268,11 +284,11 @@ public class UserDashboard implements Initializable {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
     }
-    public void setUsername(String username_v)
-    {
+    public void setUsername(String username_v) throws IOException {
         username.setText(username_v);
+        username_t = username_v;
+
     }
     public void switchForm(ActionEvent e) throws IOException {
 
@@ -288,6 +304,9 @@ public class UserDashboard implements Initializable {
             CatagoryPanel_Reference.setVisible(true);
             CatagoryReference.setVisible(true);
             Borrowed_Pane.setVisible(false);
+            System.out.println("==================================");
+            System.out.println("USER NAME: " + username_t);
+            System.out.println("==================================");
 
         }
         else if (e.getSource() == BorrowedButton)
@@ -397,50 +416,7 @@ public class UserDashboard implements Initializable {
         ls.add(book4);
         return ls;
     }
-    private List<Book> recommendAdd()
-    {
-        List<Book> ls = new ArrayList<>();
 
-        Book book = new Book();
-        book.setName("A Brief History of " +
-                "Humankind");
-        book.setAuthor("Yuval Noah Harari");
-        book.setImageSrc("/books/history_of_human.png");
-        book.setReturndate("20/6/2024");
-        ls.add(book);
-
-        Book book1 = new Book();
-        book1.setName("No gam No life 4");
-        book1.setAuthor("Yuu Kamiya");
-        book1.setImageSrc("/books/ngnl4.png");
-        ls.add(book1);
-
-        Book book2 = new Book();
-        book2.setName("No game No life 5");
-        book2.setAuthor("Yuu Kamiya");
-        book2.setImageSrc("/books/ngnl5.png");
-        ls.add(book2);
-
-        Book book3 = new Book();
-        book3.setName("Angel Next Door 3");
-        book3.setAuthor("Saekisan");
-        book3.setImageSrc("/books/angel3.png");
-        ls.add(book3);
-
-        Book book4 = new Book();
-        book4.setName("No game No life 6");
-        book4.setAuthor("Yuu Kamiya");
-        book4.setImageSrc("/books/ngnl6.png");
-        ls.add(book4);
-
-        Book book5 = new Book();
-        book5.setName("Angel Next Door 5");
-        book5.setAuthor("Saekisan");
-        book5.setImageSrc("/books/angel5.png");
-        ls.add(book5);
-
-        return ls;
-    }
     private List<Book> catagory_textbook_Add() throws SQLException {
         List<Book> ls = new ArrayList<>();
         Connection conn = mysqlconnect.ConnectDb();
