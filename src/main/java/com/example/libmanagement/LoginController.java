@@ -1,36 +1,68 @@
 package com.example.libmanagement;
 
 import com.example.libmanagement.user.UserDashboard;
+import com.jfoenix.controls.JFXButton;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import java.io.IOException;
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Objects;
 
 import java.sql.ResultSet;
+import java.util.ResourceBundle;
 
-public class LoginController {
+public class LoginController implements Initializable {
     @FXML
-    TextField username;
+    private ComboBox<String> class_v;
+
     @FXML
-    PasswordField password;
+    private PasswordField confirmpassword;
+
+    @FXML
+    private AnchorPane login_panel;
+
+    @FXML
+    private PasswordField password;
+
+    @FXML
+    private PasswordField password1;
+
     @FXML
     private Label password_action;
+
+    @FXML
+    private JFXButton register;
+
+    @FXML
+    private AnchorPane register_panel;
+
+    @FXML
+    private TextField studentname;
+
+    @FXML
+    private TextField username;
+
+    @FXML
+    private TextField username1;
+
     @FXML
     private Label username_action;
 
@@ -57,7 +89,11 @@ public class LoginController {
         stage.setIconified(true);
         System.out.println("minimize signal");
     }
-
+    public void back_to_login()
+    {
+        login_panel.setVisible(true);
+        register_panel.setVisible(false);
+    }
     public void login(ActionEvent event) throws IOException, SQLException {
         String username_v = username.getText().trim();
         String password_v = password.getText().trim();
@@ -124,20 +160,113 @@ public class LoginController {
     }
     public void register(ActionEvent event) throws IOException
     {
-        username.getScene().getWindow().hide();
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Register.fxml")));
-
-        Stage stage = new Stage();
-        Scene scene = new Scene(root);
-        stage.setTitle("Library Management");
-        stage.setScene(scene);
-        stage.setResizable(false);
-        Image icon = new Image("book.png");
-        stage.getIcons().add(icon);
-
-        stage.initStyle(StageStyle.UNDECORATED);
-        stage.show();
+//        username.getScene().getWindow().hide();
+//        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Register.fxml")));
+//
+//        Stage stage = new Stage();
+//        Scene scene = new Scene(root);
+//        stage.setTitle("Library Management");
+//        stage.setScene(scene);
+//        stage.setResizable(false);
+//        Image icon = new Image("book.png");
+//        stage.getIcons().add(icon);
+//
+//        stage.initStyle(StageStyle.UNDECORATED);
+//        stage.show();
+        login_panel.setVisible(false);
+        register_panel.setVisible(true);
 
     }
+    public void register1(ActionEvent event) throws IOException {
+        String class_data = class_v.getValue();
+        String password_data = password1.getText();
+        String studentname_data = studentname.getText();
+        String username_data = username1.getText();
+        String id_data = username_data + class_data;
+        System.out.println("class_data: "+ class_data);
+        System.out.println("password_data: " + password_data);
+        System.out.println("studentname_data: " + studentname_data);
+        System.out.println("username_data: " + username_data);
+        System.out.println("reenter password: " + confirmpassword.getText());
+        if(class_data == "null" || password_data.isEmpty() || studentname_data.isEmpty() || username_data.isEmpty() || id_data.isEmpty())
+        {
+            System.out.println("tín hiệu 1");
+            Alert warningAlert = new Alert(Alert.AlertType.WARNING);
 
+//            Image image = new Image("pokeball.png");
+//            ImageView imageView = new ImageView(image);
+//            imageView.setFitHeight(48);
+//            imageView.setFitWidth(48);
+//            warningAlert.setGraphic(imageView);
+
+            warningAlert.setTitle("Cảnh báo");
+            warningAlert.setHeaderText(null);
+            warningAlert.setContentText("Không được để trống!");
+            warningAlert.showAndWait();
+        }
+        else if(!(password.getText().equals(confirmpassword.getText())))
+        {
+            System.out.println("tín hiệu 2");
+            Alert warningAlert = new Alert(Alert.AlertType.WARNING);
+
+//            Image image = new Image("pokeball.png");
+//            ImageView imageView = new ImageView(image);
+//            imageView.setFitHeight(48);
+//            imageView.setFitWidth(48);
+//            warningAlert.setGraphic(imageView);
+
+            warningAlert.setTitle("Cảnh báo");
+            warningAlert.setHeaderText(null);
+            warningAlert.setContentText("Mật khẩu không trùng nhau!");
+            warningAlert.showAndWait();
+        }
+        else {
+            try
+            {
+                conn = mysqlconnect.ConnectDb();
+                if (conn == null)
+                {
+                    System.out.println("Connection is NULL !!!!");
+                }
+                Statement statement = conn.createStatement();
+
+                statement.executeUpdate("INSERT INTO jdbc.user "
+                        + "(iduser, student_name, class, username, password) "
+                        + "VALUES ('" + id_data + "', '" + studentname_data + "', '" + class_data + "', '" + username_data + "', '" + password_data + "')");
+
+
+
+            }
+            catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+            username.getScene().getWindow().hide();
+            username_vv = username_data;
+            FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("User_Dashboard.fxml")));
+            Parent root = loader.load();
+
+            UserDashboard userDashboard = loader.getController();
+            userDashboard.setUsername(username_data);
+
+            Stage stage = new Stage();
+            Scene scene = new Scene(root);
+            stage.setTitle("Library Management");
+            stage.setScene(scene);
+            stage.setResizable(false);
+            Image icon = new Image("book.png");
+            stage.getIcons().add(icon);
+
+            stage.show();
+
+        }
+
+    }
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        login_panel.setVisible(true);
+        register_panel.setVisible(false);
+        class_v.getItems().addAll("1/1","1/2","1/3","2/1","2/2","2/3",
+                "3/1","3/2","3/3","4/1","4/2","4/3","5/1","5/2","5/3");
+        System.out.println("set combobox complete");
+    }
 }

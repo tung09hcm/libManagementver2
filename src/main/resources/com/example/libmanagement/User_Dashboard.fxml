@@ -172,12 +172,12 @@
             </Label>
             <ScrollPane fx:id="scrollpane_borrow" layoutX="14.0" layoutY="54.0" prefHeight="234.0" prefWidth="1098.0" style="-fx-background-color: #3D3D3D;" stylesheets="@style.css" vbarPolicy="NEVER">
                <content>
-                  <HBox fx:id="cardlayout1" alignment="CENTER_LEFT" prefHeight="244.0" prefWidth="1232.0" spacing="15.0" style="-fx-background-color: #3D3D3D;" />
+                  <HBox fx:id="request" alignment="CENTER_LEFT" prefHeight="244.0" prefWidth="1232.0" spacing="15.0" style="-fx-background-color: #3D3D3D;" />
                </content>
             </ScrollPane>
             <ScrollPane fx:id="scrollpane_borrow1" layoutX="14.0" layoutY="348.0" prefHeight="234.0" prefWidth="1098.0" style="-fx-background-color: #3D3D3D;" stylesheets="@style.css" vbarPolicy="NEVER">
                <content>
-                  <HBox fx:id="cardlayout11" alignment="CENTER_LEFT" prefHeight="244.0" prefWidth="1232.0" spacing="15.0" style="-fx-background-color: #3D3D3D;" />
+                  <HBox fx:id="borrowing" alignment="CENTER_LEFT" prefHeight="244.0" prefWidth="1232.0" spacing="15.0" style="-fx-background-color: #3D3D3D;" />
                </content>
             </ScrollPane>
          </children>
