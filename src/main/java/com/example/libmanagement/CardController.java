@@ -2,6 +2,7 @@ package com.example.libmanagement;
 
 import com.example.libmanagement.Book;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -42,6 +43,20 @@ public class CardController {
         System.out.println("author: " + author.getText());
         System.out.println("returndate: " + returndate.getText());
         System.out.println("===============================");
+        Alert infoAlert = new Alert(Alert.AlertType.INFORMATION);
+
+        // Thiết lập tiêu đề cho thông báo
+        infoAlert.setTitle("Thông báo");
+
+        // Thiết lập tiêu đề đầu không có nội dung (null)
+        infoAlert.setHeaderText(null);
+
+        // Thiết lập nội dung chính của thông báo
+        infoAlert.setContentText("Trả thành công!");
+
+        // Hiển thị thông báo và chờ người dùng đóng nó
+        infoAlert.showAndWait();
+
     }
 
     public void setUsername(String username)

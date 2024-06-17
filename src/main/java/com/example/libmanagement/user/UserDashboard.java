@@ -36,13 +36,15 @@ public class UserDashboard implements Initializable {
     private JFXButton BorrowedButton;
 
     @FXML
-    private AnchorPane Borrowed_Pane;
+    private static AnchorPane Borrowed_Pane;
+    @FXML
+    private static AnchorPane CatagoryPanel_Reference;
+    @FXML
+    private static AnchorPane HomePane;
 
     @FXML
     private JFXButton CatagoryButton;
 
-    @FXML
-    private AnchorPane CatagoryPanel_Reference;
 
     @FXML
     private ScrollPane CatagoryReference;
@@ -51,7 +53,7 @@ public class UserDashboard implements Initializable {
     private JFXButton HomeButton;
 
     @FXML
-    private AnchorPane HomePane;
+    private static AnchorPane HomePane;
 
     @FXML
     private ScrollPane NovelReference;
@@ -136,9 +138,7 @@ public class UserDashboard implements Initializable {
 
     public void initializeData()
     {
-        System.out.println("==================================");
-        System.out.println("USER NAME 2: " + username_t);
-        System.out.println("==================================");
+
         recentlyAdded = new ArrayList<>(recentlyAdd());
         try {
             catagory_textbook = new ArrayList<>(catagory_textbook_Add());
@@ -160,6 +160,36 @@ public class UserDashboard implements Initializable {
         int column_catagory = 0;
         int row_catagory = 1;
         try {
+            for (Book book : catagory_reference)
+            {
+                FXMLLoader fxmlLoader = new FXMLLoader();
+                fxmlLoader.setLocation(getClass().getResource("/com/example/libmanagement/BookSample.fxml"));
+                // System.out.println("pass thourgh setlocation");
+
+                HBox cardBox = fxmlLoader.load();
+                // System.out.println("pass thourgh load");
+
+                CardController cardController = fxmlLoader.getController();
+                cardController.setUsername(LoginController.username_vv);
+                cardController.setData(book);
+
+                borrowing.getChildren().add(cardBox);
+            }
+            for (Book book : catagory_workbook)
+            {
+                FXMLLoader fxmlLoader = new FXMLLoader();
+                fxmlLoader.setLocation(getClass().getResource("/com/example/libmanagement/BookSample.fxml"));
+                // System.out.println("pass thourgh setlocation");
+
+                HBox cardBox = fxmlLoader.load();
+                // System.out.println("pass thourgh load");
+
+                CardController cardController = fxmlLoader.getController();
+                cardController.setUsername(LoginController.username_vv);
+                cardController.setData(book);
+
+                request.getChildren().add(cardBox);
+            }
             for (Book book : recentlyAdded) {
                 FXMLLoader fxmlLoader = new FXMLLoader();
                 fxmlLoader.setLocation(getClass().getResource("/com/example/libmanagement/BookSample.fxml"));

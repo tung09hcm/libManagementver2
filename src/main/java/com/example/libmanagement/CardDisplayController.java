@@ -1,5 +1,6 @@
 package com.example.libmanagement;
 
+import com.example.libmanagement.user.UserDashboard;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -33,7 +34,20 @@ public class CardDisplayController {
         authorname.setText(book.getAuthor());
     }
     public void SwitchBorrowSceneAction() throws IOException, SQLException {
-        System.out.println("username_v_card_display_controller: " + username_v);
+//        System.out.println("username_v_card_display_controller: " + LoginController.username_vv);
+//        FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("BorrowWindow.fxml")));
+//        Parent root = loader.load();
+//
+//        Stage stage = new Stage();
+//        Scene scene = new Scene(root);
+//        stage.setTitle("Library Management");
+//        stage.setScene(scene);
+//        stage.setResizable(false);
+//        Image icon = new Image("book.png");
+//        stage.getIcons().add(icon);
+//
+//        stage.show();
+
     }
     public void setUsername(String username)
     {

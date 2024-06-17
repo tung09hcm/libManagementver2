@@ -20,12 +20,12 @@
          <children>
             <Label fx:id="bookname" prefHeight="93.0" prefWidth="167.0" text="A Brief History of &#10;Humankind" textFill="WHITE">
                <font>
-                  <Font name="Berlin Sans FB Bold" size="15.0" />
+                  <Font name="Times New Roman Bold" size="15.0" />
                </font>
             </Label>
             <Label fx:id="author" alignment="TOP_LEFT" prefHeight="50.0" prefWidth="139.0" text="Yuval Noah Harari&#10;" textFill="WHITE">
                <font>
-                  <Font name="Berlin Sans FB" size="15.0" />
+                  <Font name="Times New Roman" size="15.0" />
                </font>
             </Label>
             <Label fx:id="returndate" alignment="TOP_LEFT" prefHeight="50.0" prefWidth="139.0" text="20/6/2024" textFill="WHITE">

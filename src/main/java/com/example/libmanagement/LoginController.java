@@ -148,7 +148,8 @@ public class LoginController implements Initializable {
 
                     stage.show();
                 }
-            } else {
+            }
+            else {
                 passwordFromDB = "";
                 System.out.println("User not found.");
                 username_action.setText("Incorrect Username");
@@ -204,7 +205,7 @@ public class LoginController implements Initializable {
             warningAlert.setContentText("Không được để trống!");
             warningAlert.showAndWait();
         }
-        else if(!(password.getText().equals(confirmpassword.getText())))
+        else if(!(password1.getText().equals(confirmpassword.getText())))
         {
             System.out.println("tín hiệu 2");
             Alert warningAlert = new Alert(Alert.AlertType.WARNING);
@@ -229,7 +230,7 @@ public class LoginController implements Initializable {
                     System.out.println("Connection is NULL !!!!");
                 }
                 Statement statement = conn.createStatement();
-
+                username_vv = username_data;
                 statement.executeUpdate("INSERT INTO jdbc.user "
                         + "(iduser, student_name, class, username, password) "
                         + "VALUES ('" + id_data + "', '" + studentname_data + "', '" + class_data + "', '" + username_data + "', '" + password_data + "')");

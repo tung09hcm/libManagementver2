@@ -24,7 +24,7 @@
                   <Font name="Times New Roman" size="25.0" />
                </font>
             </Label>
-            <Label fx:id="amount" prefHeight="32.0" prefWidth="562.0" text="Amount: &#10;" textFill="WHITE">
+            <Label fx:id="amount" prefHeight="32.0" prefWidth="562.0" text="Amount: 50&#10;" textFill="WHITE">
                <font>
                   <Font name="Times New Roman" size="25.0" />
                </font>
