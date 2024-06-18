@@ -1,5 +1,6 @@
 package com.example.libmanagement;
 
+import com.example.libmanagement.user.UserDashboard;
 import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -39,6 +40,23 @@ public class CardDisplayController {
         System.out.println(bookname.getText());
         System.out.println(authorname.getText());
         System.out.println(username_v);
+        FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("BorrowWindow.fxml")));
+        Parent root = loader.load();
+
+
+        BorrowWindow borrowWindow = loader.getController();
+        borrowWindow.setData(bookname.getText(),authorname.getText());
+
+
+        Stage stage = new Stage();
+        Scene scene = new Scene(root);
+        stage.setTitle("Library Management");
+        stage.setScene(scene);
+        stage.setResizable(false);
+        Image icon = new Image("book.png");
+        stage.getIcons().add(icon);
+
+        stage.show();
     }
     public void setUsername(String username)
     {

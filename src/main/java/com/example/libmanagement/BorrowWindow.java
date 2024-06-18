@@ -120,6 +120,14 @@ public class BorrowWindow {
         System.out.println("result: [" + result + "]");
         return result;
     }
+    public String BorrowSQLCommand(String target_v)
+    {
+        System.out.println("bookname: " + bookname.getText());
+        String result;
+        result =  "UPDATE jdbc." +target_v.trim() + " SET amount = amount - 1   WHERE name = '"+bookname.getText()+"'";
+        System.out.println("result: [" + result + "]");
+        return result;
+    }
     public void BorrowAction(ActionEvent event) throws SQLException {
         System.out.println("bookname: " + bookname.getText());
         System.out.println("author: " + author.getText());
@@ -137,6 +145,48 @@ public class BorrowWindow {
             System.out.println("return date: " + return_date);
             Alert infoAlert = new Alert(Alert.AlertType.INFORMATION);
 
+
+            Connection conn = mysqlconnect.ConnectDb();
+            assert conn != null;
+            Statement statement = conn.createStatement();
+            Statement statement1 = conn.createStatement();
+            ResultSet rs = statement.executeQuery(SQLCommand("novel"));
+            if(!rs.next())
+            {
+                ResultSet rs1 = statement.executeQuery(SQLCommand("textbook"));
+                if(!rs1.next())
+                {
+                    ResultSet rs2 = statement.executeQuery(SQLCommand("workbook"));
+                    if(!rs2.next())
+                    {
+                        ResultSet rs3 = statement.executeQuery(SQLCommand("reference_book"));
+                        if(!rs3.next())
+                        {
+                            System.out.println("Hết cứu");
+                        }
+                        else
+                        {
+                            //amount.setText("Amount: " + rs3.getString("amount"));
+                            statement1.executeUpdate(BorrowSQLCommand("reference_book"));
+                        }
+                    }
+                    else
+                    {
+                        //amount.setText("Amount: " + rs2.getString("amount"));
+                        statement1.executeUpdate(BorrowSQLCommand("work_book"));
+                    }
+                }
+                else
+                {
+                    //amount.setText("Amount: " + rs1.getString("amount"));
+                    statement1.executeUpdate(BorrowSQLCommand("textbook"));
+                }
+            }
+            else {
+                //amount.setText("Amount: " + rs.getString("amount"));
+                statement1.executeUpdate(BorrowSQLCommand("novel"));
+            }
+
             // Thiết lập tiêu đề cho thông báo
             infoAlert.setTitle("Thông báo");
 
@@ -147,9 +197,9 @@ public class BorrowWindow {
             infoAlert.setContentText("Gửi yêu cầu thành công!");
             infoAlert.showAndWait();
 
-
         }
 
 
     }
+
 }
