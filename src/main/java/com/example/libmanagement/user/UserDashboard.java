@@ -36,15 +36,13 @@ public class UserDashboard implements Initializable {
     private JFXButton BorrowedButton;
 
     @FXML
-    private static AnchorPane Borrowed_Pane;
-    @FXML
-    private static AnchorPane CatagoryPanel_Reference;
-    @FXML
-    private static AnchorPane HomePane;
+    public AnchorPane Borrowed_Pane;
 
     @FXML
     private JFXButton CatagoryButton;
 
+    @FXML
+    private AnchorPane CatagoryPanel_Reference;
 
     @FXML
     private ScrollPane CatagoryReference;
@@ -53,7 +51,7 @@ public class UserDashboard implements Initializable {
     private JFXButton HomeButton;
 
     @FXML
-    private static AnchorPane HomePane;
+    private AnchorPane HomePane;
 
     @FXML
     private ScrollPane NovelReference;
@@ -122,11 +120,13 @@ public class UserDashboard implements Initializable {
     public String username_t;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        // Borrowed_Pane = new AnchorPane();
 
         HomePane.setVisible(true);
         Borrowed_Pane.setVisible(false);
         CatagoryPanel_Reference.setVisible(false);
         CatagoryReference.setVisible(false);
+
 
         System.out.println("==================================");
         System.out.println("USER NAME 1: " + LoginController.username_vv);
@@ -226,7 +226,6 @@ public class UserDashboard implements Initializable {
                 bookcontainer.add(bookBox,column++,row);
                 GridPane.setMargin(bookBox, new Insets(10));
             }
-
             for (Book book : catagory_reference) {
                 FXMLLoader fxmlLoader = new FXMLLoader();
                 fxmlLoader.setLocation(getClass().getResource("/com/example/libmanagement/BookDisplay.fxml"));
@@ -420,7 +419,7 @@ public class UserDashboard implements Initializable {
                 "Humankind");
         book.setAuthor("Yuval Noah Harari\n");
         book.setImageSrc("/books/history_of_human.png");
-        book.setReturndate("20/6/2024");
+        //book.setReturndate("20/6/2024");
         ls.add(book);
 
         Book book1 = new Book();
@@ -491,5 +490,7 @@ public class UserDashboard implements Initializable {
 
         return ls;
     }
+
+
 
 }

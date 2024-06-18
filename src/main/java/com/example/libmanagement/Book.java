@@ -7,16 +7,26 @@ public class Book {
     private String id;
     private String returndate;
     private int amount;
+    private String type;
 
     public Book()
     {}
 
-    public Book(String name, String author, String imageSrc, String id, int amount) {
+    public Book(String name, String author, String imageSrc, String id, int amount, String type) {
         this.name = name;
         this.author = author;
         this.ImageSrc = imageSrc;
         this.id = id;
         this.amount = amount;
+        this.type = type;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public int getAmount() {
