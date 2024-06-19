@@ -128,6 +128,14 @@ public class BorrowWindow {
         System.out.println("result: [" + result + "]");
         return result;
     }
+    public String InsertSQLCommand(String username, String bookname, String returndate)
+    {
+        String result;
+        result =  "INSERT INTO jdbc.request (username,bookname,amount,returndate) VALUES ('"+username+"', '"+bookname+"', '"+1+"', '"+returndate +"')";
+        System.out.println("result: [" + result + "]");
+        return result;
+    }
+
     public void BorrowAction(ActionEvent event) throws SQLException {
         System.out.println("bookname: " + bookname.getText());
         System.out.println("author: " + author.getText());
@@ -150,6 +158,7 @@ public class BorrowWindow {
             assert conn != null;
             Statement statement = conn.createStatement();
             Statement statement1 = conn.createStatement();
+            Statement statement2 = conn.createStatement();
             ResultSet rs = statement.executeQuery(SQLCommand("novel"));
             if(!rs.next())
             {
@@ -186,6 +195,7 @@ public class BorrowWindow {
                 //amount.setText("Amount: " + rs.getString("amount"));
                 statement1.executeUpdate(BorrowSQLCommand("novel"));
             }
+            statement2.executeUpdate(InsertSQLCommand(LoginController.username_vv,bookname.getText(),return_date));
 
             // Thiết lập tiêu đề cho thông báo
             infoAlert.setTitle("Thông báo");
